@@ -2,7 +2,8 @@
 
 This document captures the visual identity, layout conventions, typography,
 colour, and component patterns for **renoraad.dk** — the marketing / landing
-page for the Renovations Rådgivning service.
+page for the RenoRaad service (a multi-service helper for DIY homeowners:
+materials, advice, tool rental, delivery, project review).
 
 ## Direction: "Nordisk Tillid" (Confident Nordic-Tech)
 
@@ -136,14 +137,21 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Soft, low shadow only (`0 1px 2px rgba(26,26,26,0.04)`); rely on borders and
   the grid for structure, not heavy shadows.
 
-### "Sådan virker det" (How it works)
+### Interactive selector ("Hvad har du brug for hjælp til?")
 
-- 6 steps in a grid: 3 columns × 2 rows on desktop, 2 columns on tablet,
-  stacked on mobile.
-- Big tabular accent numeral, short heading, one line of copy, thin connector
-  rule between steps. Mirrors the 6-step user journey:
-  **Fortæl om projekt → Vi vurderer → Betal (MobilePay) → Få rådgivning (e-mail,
-  3-5 dage) → Opfølgende spørgsmål → Byg dit projekt.**
+- The page's centrepiece (`.picker`, `#start`): a raised surface card with 5
+  selectable options (Materialer / Rådgivning / Værktøj / Levering / Noget
+  andet). Picking one reveals an adapted request form beneath it. Selected
+  option uses `--accent` border + `--accent-soft` fill.
+- Materialer/Levering show the file-upload field; others show a plain form.
+- Should read as a modern, app-like service — not a static brochure.
+
+### "Sådan fungerer det" (How it works)
+
+- 3 steps in a row on desktop (`.steps-3`), stacked on mobile.
+- Big tabular accent numeral, short heading, one line of copy. Mirrors the
+  journey: **Fortæl om dit projekt → Vælg den hjælp, du har brug for → Kom i
+  gang.** (No MobilePay step.)
 
 ### Trust elements (high priority for conversion)
 
@@ -166,9 +174,10 @@ precision. No serif. Set generous line-height for calm, readable copy.
 
 - **Photography:** real Danish homes mid- or post-renovation, natural light,
   light wood, neutral interiors. Warm tone, never blue/cold colour grade.
-- **Renovation moments:** in-progress rooms, light wood, tools at rest, finished
-  details — adds tactility and reinforces the "real renovation" theme. Avoid
-  making materials the subject; the service advises, it does not sell materials.
+- **Renovation moments:** in-progress builds, light wood, tools at rest,
+  materials staged for a project, finished details — adds tactility and
+  reinforces the "real DIY project" theme. Materials, tools and delivery are all
+  part of the offering, so they are fair subjects.
 - **Subtle texture only:** a faint paper/grain on large flat sections is OK for
   depth; never let it compete with content or hurt performance.
 - Avoid generic corporate stock, handshakes, and clip-art.
@@ -184,9 +193,10 @@ precision. No serif. Set generous line-height for calm, readable copy.
 
 - Approachable, trustworthy, practical — speaking to a **private homeowner**,
   not a contractor. Plain Danish, "du"-form, no industry jargon.
-- Lead with reassurance and outcomes ("Tryghed i din renovering",
-  "Træf de rigtige valg — undgå dyre fejl"), not features.
-- Keep CTAs concrete and low-pressure: **"Kom i gang"**, **"Start dit projekt"**.
+- Lead with reassurance and outcomes ("Gør dit byggeprojekt nemmere",
+  "Kom godt fra start", "Pris altid før vi går i gang"), not features.
+- Keep CTAs concrete and low-pressure: **"Kom i gang"**, **"Få et tilbud"**,
+  **"Upload materialeliste"**, **"Få rådgivning"**.
 
 ## Languages
 
@@ -194,9 +204,9 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Design for text expansion: EN strings can run ~15–30% longer than DA. Don't
   hard-code widths around copy; let buttons and headings wrap gracefully.
 - Use full Danish characters (æ ø å) — confirm the chosen webfont renders them.
-- Brand name renders as **Renovations Rådgivning** in all copy; the domain
-  `renoraad.dk` (Renoraad = Renovations Rådgivning, collapsed and without
-  æ/ø/å) only in URLs.
+- Brand name renders as **RenoRaad** (one word) in all copy and in the domain
+  `renoraad.dk`. (Derived from Renovations Rådgivning, but the spoken/written
+  brand is "RenoRaad".)
 
 ## Accessibility
 
