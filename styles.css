@@ -407,14 +407,17 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   margin-bottom: var(--sp-4);
 }
 .card-icon svg { width: 24px; height: 24px; }
-.card-emoji {
+/* Custom duotone icon badge — used in the picker and on service cards. */
+.ico {
   display: inline-grid; place-items: center;
   width: 48px; height: 48px;
   border-radius: 12px;
   background: var(--accent-soft);
-  font-size: 24px; line-height: 1;
-  margin-bottom: var(--sp-4);
+  color: var(--accent);
 }
+.ico svg { width: 27px; height: 27px; }
+.ico-lg { width: 52px; height: 52px; border-radius: 14px; margin-bottom: var(--sp-4); }
+.ico-lg svg { width: 28px; height: 28px; }
 .card h3 { font-size: 20px; margin-bottom: var(--sp-2); }
 .card p { color: var(--text-muted); font-size: 15.5px; }
 .card-link {
@@ -538,7 +541,6 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   border-color: var(--accent);
   background: var(--accent-soft);
 }
-.picker-emoji { font-size: 30px; line-height: 1; }
 .picker-label { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
 .picker-hint { font-size: 13px; color: var(--text-muted); }
 
@@ -633,7 +635,8 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.project span { font-size: 22px; line-height: 1; }
+.project-ic { display: inline-flex; flex: none; color: var(--accent); }
+.project-ic svg { width: 24px; height: 24px; }
 
 /* ---------- About ---------- */
 .about { display: grid; gap: var(--sp-7); align-items: center; }
