@@ -1,5 +1,5 @@
 /* ============================================================
-   Renovations Rådgivning — "Nordisk Tillid" (Confident Nordic-Tech)
+   SmartByg — "Nordisk Tillid" (Confident Nordic-Tech)
    See design.md for the full design system.
    ============================================================ */
 
@@ -481,10 +481,6 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
 /* ---------- Cards ---------- */
 .cards { display: grid; gap: var(--sp-5); }
 @media (min-width: 760px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-/* Services: 5 cards that wrap evenly (3-up, then 2-up). */
-.cards-5 { grid-template-columns: 1fr; }
-@media (min-width: 620px) { .cards-5 { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .cards-5 { grid-template-columns: repeat(3, 1fr); } }
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -523,6 +519,75 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   font-size: 15px;
 }
 .card-link:hover { color: var(--accent-hover); }
+
+/* ---------- Services (detailed offering blocks) ---------- */
+/* Each of the five offerings gets its own block: copy + CTA on the left, the
+   "what you get" list on the right. Blocks without a list use .service-solo. */
+.services { display: grid; gap: var(--sp-5); }
+.service {
+  display: grid;
+  gap: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: var(--sp-6);
+}
+@media (min-width: 880px) {
+  .service {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: var(--sp-8);
+    align-items: start;
+    padding: var(--sp-7);
+  }
+  .service-solo { grid-template-columns: 1fr; }
+}
+.service-kicker {
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--accent);
+  margin-bottom: var(--sp-2);
+}
+.service-main h3 {
+  font-size: clamp(21px, 2.4vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--sp-4);
+}
+.service-main p {
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+  max-width: 62ch;
+}
+.service-main .btn { margin-top: var(--sp-2); }
+
+.service-facts {
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-5);
+}
+.service-facts h4 {
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}
+.service-facts ul { display: grid; gap: 10px; }
+.service-facts li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.service-facts li::before {
+  content: "";
+  position: absolute; left: 0; top: 2px;
+  width: 17px; height: 17px; border-radius: 50%;
+  background: var(--accent-soft);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%231F5E5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
 
 /* ---------- Split (for homeowners) ---------- */
 .split { display: grid; gap: var(--sp-7); align-items: center; }
@@ -581,7 +646,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
 }
 .footer-brand p { color: var(--text-muted); font-size: 15px; margin-top: var(--sp-3); max-width: 32ch; }
 .footer-col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); margin-bottom: var(--sp-4); }
-.footer-col a { display: block; padding: 5px 0; color: var(--text); font-size: 15px; }
+.footer-col a { display: block; padding: 5px 0; color: var(--text); font-size: 15px; overflow-wrap: break-word; }
 .footer-col a:hover { color: var(--accent); }
 .footer-lang { display: flex; gap: var(--sp-4); }
 .footer-lang a[aria-current="true"] { color: var(--accent); }
@@ -625,7 +690,9 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   grid-template-columns: repeat(2, 1fr);
   gap: var(--sp-3);
 }
-@media (min-width: 720px) { .picker-options { grid-template-columns: repeat(5, 1fr); } }
+/* Six options: 2-up on mobile, 3-up (two tidy rows) from tablet. A single
+   6-across row would clip the longest labels, so we stay at three. */
+@media (min-width: 720px) { .picker-options { grid-template-columns: repeat(3, 1fr); } }
 .picker-option {
   display: flex; flex-direction: column; align-items: center; gap: 4px;
   text-align: center;
@@ -642,7 +709,12 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   border-color: var(--accent);
   background: var(--accent-soft);
 }
-.picker-label { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+/* Long single words ("Projektgennemgang") must break inside the narrow mobile
+   column rather than overflow the option. */
+.picker-label {
+  font-weight: 600; font-size: 16px; letter-spacing: -0.01em;
+  hyphens: auto; overflow-wrap: break-word;
+}
 .picker-hint { font-size: 13px; color: var(--text-muted); }
 
 /* Reveal panel */

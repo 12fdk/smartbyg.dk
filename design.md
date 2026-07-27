@@ -2,8 +2,9 @@
 
 This document captures the visual identity, layout conventions, typography,
 colour, and component patterns for **renoraad.dk** — the marketing / landing
-page for the RenoRaad service (a multi-service helper for DIY homeowners:
-materials, advice, tool rental, delivery, project review).
+page for the **SmartByg** service (a multi-service helper for DIY homeowners:
+materials, advice, tool rental, house-purchase review, project review).
+The domain keeps the older RenoRaad name; the brand in all copy is SmartByg.
 
 ## Direction: "Nordisk Tillid" (Confident Nordic-Tech)
 
@@ -139,12 +140,29 @@ precision. No serif. Set generous line-height for calm, readable copy.
 
 ### Interactive selector ("Hvad har du brug for hjælp til?")
 
-- The page's centrepiece (`.picker`, `#start`): a raised surface card with 5
-  selectable options (Materialer / Rådgivning / Værktøj / Levering / Noget
-  andet). Picking one reveals an adapted request form beneath it. Selected
-  option uses `--accent` border + `--accent-soft` fill.
-- Materialer/Levering show the file-upload field; others show a plain form.
+- The page's centrepiece (`.picker`, `#start`): a raised surface card with 6
+  selectable options (Materialer / Rådgivning / Værktøj / Huskøb /
+  Projektgennemgang / Noget andet). Picking one reveals an adapted request form
+  beneath it. Selected option uses `--accent` border + `--accent-soft` fill.
+- Laid out 2-up on mobile, 3-up from 720px (two tidy rows). A single 6-across
+  row clips the longest labels, so don't reach for it. `.picker-label` sets
+  `hyphens: auto`; "Projekt&shy;gennemgang" carries a soft hyphen so it breaks
+  cleanly in the narrow mobile column.
+- Materialer / Huskøb / Projektgennemgang show the file-upload field (each with
+  its own label); others show a plain form.
 - Should read as a modern, app-like service — not a static brochure.
+
+### Service blocks (`.services` / `.service`)
+
+- The "Vores ydelser" section is **five detailed blocks**, not a grid of terse
+  cards — each offering has to sell itself. A block is a `.card`-style surface
+  split two ways from 880px: `.service-main` (icon badge, small accent kicker
+  with the short service name, sentence-length `h3`, two or three short
+  paragraphs, primary CTA) and `.service-facts` (a sunken panel with a label
+  and a tick-marked list of what you get / what we look at).
+- A block with no list takes `.service-solo`, which collapses it to one column
+  and keeps the copy at a readable measure.
+- Every CTA deep-links into the selector via `data-select`.
 
 ### "Sådan foregår det" (customer journey)
 
@@ -236,9 +254,8 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Design for text expansion: EN strings can run ~15–30% longer than DA. Don't
   hard-code widths around copy; let buttons and headings wrap gracefully.
 - Use full Danish characters (æ ø å) — confirm the chosen webfont renders them.
-- Brand name renders as **RenoRaad** (one word) in all copy and in the domain
-  `renoraad.dk`. (Derived from Renovations Rådgivning, but the spoken/written
-  brand is "RenoRaad".)
+- Brand name renders as **SmartByg** (one word) in all copy. The domain stays
+  `renoraad.dk` from the earlier RenoRaad name — the mismatch is intentional.
 
 ## Accessibility
 

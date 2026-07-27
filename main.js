@@ -1,4 +1,4 @@
-// RenoRaad — landing page interactions.
+// SmartByg — landing page interactions.
 // Dependency-free for GitHub Pages: scroll-reveal, the interactive "what do you
 // need help with?" selector, and Web3Forms AJAX submission for both forms.
 
@@ -80,18 +80,27 @@
       comment: "Beskriv dit projekt"
     },
     vaerktoej: {
-      title: "Værktøjsudlejning",
+      title: "Leje af værktøj",
       desc: "Fortæl, hvilket værktøj du mangler og hvornår — så finder vi det rette til dit projekt.",
       service: "Værktøj",
       upload: false,
       comment: "Hvilket værktøj har du brug for?"
     },
-    levering: {
-      title: "Levering",
-      desc: "Fortæl, hvad der skal leveres og hvortil — så oplyser vi pris og muligheder. Har du en liste, kan du uploade den.",
-      service: "Levering",
+    huskoeb: {
+      title: "Huskøbsgennemgang",
+      desc: "Fortæl om boligen, du overvejer at købe — så aftaler vi en gennemgang, inden du skriver under. Har du salgsopstilling eller tilstandsrapport, kan du uploade den.",
+      service: "Huskøb",
       upload: true,
-      comment: "Hvad skal leveres — og hvortil?"
+      uploadLabel: "Upload salgsopstilling eller tilstandsrapport",
+      comment: "Fortæl om boligen — adresse, type og hvornår det haster"
+    },
+    projektgennemgang: {
+      title: "Projektgennemgang",
+      desc: "Har du tegninger, billeder eller en idé? Upload det, du har — så gennemgår vi projektet med dig, inden du går i gang.",
+      service: "Projektgennemgang",
+      upload: true,
+      uploadLabel: "Upload tegninger, billeder eller skitser",
+      comment: "Beskriv dit projekt"
     },
     andet: {
       title: "Noget andet",
@@ -111,6 +120,7 @@
     var subjectField = document.getElementById("form-subject");
     var serviceField = document.getElementById("form-service");
     var uploadField = document.getElementById("field-upload");
+    var uploadLabel = document.getElementById("upload-label");
     var commentLabel = document.getElementById("comment-label");
 
     function selectOption(key, focusPanel) {
@@ -124,8 +134,10 @@
       if (panelTitle) panelTitle.textContent = cfg.title;
       if (panelDesc) panelDesc.textContent = cfg.desc;
       if (serviceField) serviceField.value = cfg.service;
-      if (subjectField) subjectField.value = "RenoRaad — " + cfg.title + " (forespørgsel)";
+      if (subjectField) subjectField.value = "SmartByg — " + cfg.title + " (forespørgsel)";
       if (uploadField) uploadField.hidden = !cfg.upload;
+      // Each option that takes a file asks for a different document.
+      if (uploadLabel) uploadLabel.textContent = cfg.uploadLabel || "Upload materialeliste";
       if (commentLabel) commentLabel.textContent = cfg.comment;
 
       panel.hidden = false;
