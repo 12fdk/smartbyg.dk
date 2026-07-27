@@ -1,26 +1,28 @@
-# RenoRaad
+# SmartByg
 
-Brand / page name: **RenoRaad** (written as one word in all copy; from
-**Reno**vations **Råd**givning).
-Domain: `renoraad.dk` (no æ/ø/å in the URL).
+Brand / page name: **SmartByg** (written as one word in all copy).
+Domain: `renoraad.dk` (no æ/ø/å in the URL). The domain still carries the
+previous **RenoRaad** name — it was deliberately left in place at the rebrand.
+Do not "fix" the copy back to RenoRaad to match the URL.
 
-Landing page for the RenoRaad service, hosted on GitHub Pages.
+Landing page for the SmartByg service, hosted on GitHub Pages.
 
 ## Purpose
 
-Marketing / landing page that introduces visitors to RenoRaad and directs them
+Marketing / landing page that introduces visitors to SmartByg and directs them
 to get started — by uploading a material list or requesting help.
 
-RenoRaad is a **multi-service helper for DIY homeowners** building their own
+SmartByg is a **multi-service helper for DIY homeowners** building their own
 projects. It is run by **Simon, an educated carpenter (uddannet tømrer)**. The
 service helps across five areas:
 
 1. **Byggematerialer** — the user uploads a material list (PDF / Excel / image)
-   and receives a single combined quote (tilbud).
+   and receives a single combined quote (tilbud). Free delivery over 6.000 kr.
+   to brofaste øer is a benefit *of this service*, not a service of its own.
 2. **Rådgivning** — sparring/advice from an educated carpenter.
-3. **Værktøjsudlejning** — rental of professional tools.
-4. **Levering** — materials delivered to the door (free over 6.000 kr. to
-   brofaste øer; otherwise quoted).
+3. **Leje af værktøj** — rental of professional tools.
+4. **Huskøbsgennemgang** — a carpenter walks a property with the buyer *before*
+   they sign, assessing condition and likely renovation costs.
 5. **Projektgennemgang** — a review of the project before the user starts.
 
 The user always gets a price *before* work begins — no hidden fees. (There is
@@ -29,18 +31,28 @@ The user always gets a price *before* work begins — no hidden fees. (There is
 ### Centrepiece: the interactive selector
 
 The front page's defining element is the **"Hvad har du brug for hjælp til?"**
-selector (`#start`): a card with options (Materialer / Rådgivning / Værktøj /
-Levering / Noget andet). Picking one reveals an adapted request form below —
-**Materialer** and **Levering** show the file-upload field; the others show a
-plain request form. Hero CTAs and service-card links deep-link into it via
-`data-select`. It should feel like a modern service, not a static brochure.
+selector (`#start`): a card with six options (Materialer / Rådgivning / Værktøj
+/ Huskøb / Projektgennemgang / Noget andet). Picking one reveals an adapted
+request form below — **Materialer**, **Huskøb** and **Projektgennemgang** show
+the file-upload field (each with its own label, set from `uploadLabel` in
+`main.js`); the others show a plain request form. Hero CTAs, service blocks and
+footer links deep-link into it via `data-select`. It should feel like a modern
+service, not a static brochure.
 
 ### History / do NOT revert
 
 This positioning **replaces** an earlier "advice-only, no materials, 6-step
-MobilePay flow" direction (see commit `f303902`). Materials, tool rental,
-delivery, the multi-service framing, and the **RenoRaad** brand name are all
-intentional. Do not reintroduce the advisory-only / MobilePay positioning.
+MobilePay flow" direction (see commit `f303902`). Materials, tool rental, the
+multi-service framing and the owner-supplied service copy are all intentional.
+Do not reintroduce the advisory-only / MobilePay positioning.
+
+Two later, deliberate changes (issue #18):
+
+- The brand was renamed **RenoRaad → SmartByg**. The domain was intentionally
+  left as `renoraad.dk`.
+- **Levering** was dropped as a standalone service and picker option; it now
+  appears only as a selling point (materials bullet, trust strip, FAQ).
+  **Huskøbsgennemgang** took its place in the five-service line-up.
 
 ### Forms / backend
 
@@ -48,7 +60,8 @@ Forms post to **Web3Forms** (`api.web3forms.com/submit`) via AJAX (`main.js`),
 which works on static GitHub Pages and supports file uploads. The access key is
 a placeholder — search `REPLACE_WITH_WEB3FORMS_ACCESS_KEY` in `index.html` and
 insert the real key from web3forms.com (the key is public by design). Other
-placeholders to finalise: the public e-mail (`kontakt@renoraad.dk`), the CVR
+placeholders to finalise: the public e-mail (`kontakt@renoraad.dk` — still on
+the old domain), the CVR
 number (footer), and the Handelsbetingelser / Privatlivspolitik / Cookiepolitik
 pages. Phone number is live: **29 90 02 95**.
 

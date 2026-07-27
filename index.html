@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Mark JS as available so progressive-reveal styles only apply when they can be undone. -->
   <script>document.documentElement.classList.add("js");</script>
-  <title>RenoRaad — Gør dit byggeprojekt nemmere</title>
-  <meta name="description" content="RenoRaad hjælper dig med dit gør-det-selv-projekt — fra byggematerialer og rådgivning til værktøj og levering. Upload din materialeliste og få et samlet tilbud." />
+  <title>SmartByg — Byg selv med den rette hjælp hele vejen</title>
+  <meta name="description" content="SmartByg hjælper dig med rådgivning, byggematerialer og værktøj, så du kommer sikkert fra idé til færdigt projekt. Upload din materialeliste og få et samlet tilbud." />
   <meta name="theme-color" content="#1F5E5B" />
 
-  <meta property="og:title" content="RenoRaad — Gør dit byggeprojekt nemmere" />
-  <meta property="og:description" content="Fra materialer og rådgivning til værktøj og levering — RenoRaad hjælper dig med at komme godt fra start på dit gør-det-selv-projekt." />
+  <meta property="og:title" content="SmartByg — Byg selv med den rette hjælp hele vejen" />
+  <meta property="og:description" content="Rådgivning, byggematerialer og værktøj til dit gør-det-selv-projekt — så du kommer sikkert fra idé til færdigt projekt." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="da_DK" />
 
@@ -29,7 +29,7 @@
   <!-- ───────────── Header ───────────── -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="RenoRaad — forside">
+      <a class="brand" href="#top" aria-label="SmartByg — forside">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 10.5 12 4l9 6.5" />
@@ -37,7 +37,7 @@
             <path d="M9.5 20v-5.5h5V20" />
           </svg>
         </span>
-        <span class="brand-name">RenoRaad</span>
+        <span class="brand-name">SmartByg</span>
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Hovednavigation">
@@ -75,12 +75,13 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Velkommen til RenoRaad</p>
-          <h1>Gør dit<br />byggeprojekt nemmere.</h1>
+          <p class="eyebrow">Velkommen til SmartByg</p>
+          <h1>Byg selv – med den rette<br />hjælp hele vejen.</h1>
           <p class="lead">
-            Fra materialer og rådgivning til værktøj og levering — RenoRaad
-            hjælper dig med at komme godt fra start. Hele vejen, fra den
-            første idé til de sidste skruer.
+            SmartByg hjælper dig med rådgivning, byggematerialer og værktøj, så
+            du kommer sikkert fra idé til færdigt projekt. Uanset om du skal
+            bygge en terrasse, renovere boligen eller blot har brug for hjælp
+            til at komme videre.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="#start">Få et tilbud</a>
@@ -107,7 +108,7 @@
               <li class="topic">Materialer</li>
               <li class="topic">Rådgivning</li>
               <li class="topic">Værktøj</li>
-              <li class="topic">Levering</li>
+              <li class="topic">Projektgennemgang</li>
             </ul>
             <div class="hero-card">
               <span class="hero-card-dot"></span>
@@ -169,19 +170,32 @@
               <span class="picker-label">Værktøj</span>
               <span class="picker-hint">Lej det, du mangler</span>
             </button>
-            <button type="button" class="picker-option" role="radio" aria-checked="false" data-option="levering">
+            <button type="button" class="picker-option" role="radio" aria-checked="false" data-option="huskoeb">
               <span class="ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2.6" y="7.2" width="11" height="8.6" rx="1.4" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                  <rect x="2.6" y="7.2" width="11" height="8.6" rx="1.4"/>
-                  <path d="M13.6 10h3.2a1.5 1.5 0 0 1 1.2.6l2 2.7a1.5 1.5 0 0 1 .3.9v1.6H13.6Z"/>
-                  <circle cx="7" cy="17.6" r="1.8"/>
-                  <circle cx="17.2" cy="17.6" r="1.8"/>
-                  <path d="M8.8 17.8h6.6"/>
+                  <path d="M5.5 10.2 12 5.1l6.5 5.1V19h-13Z" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <path d="M2.8 11.4 12 4.2l9.2 7.2"/>
+                  <path d="M5.5 10.2V19h5.4"/>
+                  <path d="M18.5 10.2v2.2"/>
+                  <circle cx="16.2" cy="16.2" r="3.1"/>
+                  <path d="m18.5 18.5 2.3 2.3"/>
                 </svg>
               </span>
-              <span class="picker-label">Levering</span>
-              <span class="picker-hint">Direkte til døren</span>
+              <span class="picker-label">Huskøb</span>
+              <span class="picker-hint">Gennemgang før køb</span>
+            </button>
+            <button type="button" class="picker-option" role="radio" aria-checked="false" data-option="projektgennemgang">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="4.6" width="14" height="16" rx="2" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <rect x="5" y="4.6" width="14" height="16" rx="2"/>
+                  <path d="M9.2 4.6V3.5a1.2 1.2 0 0 1 1.2-1.2h3.2a1.2 1.2 0 0 1 1.2 1.2v1.1Z"/>
+                  <path d="m9 12.4 2 2 4-4"/>
+                  <path d="M9 17.4h6"/>
+                </svg>
+              </span>
+              <span class="picker-label">Projekt&shy;gennemgang</span>
+              <span class="picker-hint">Tjek før du går i gang</span>
             </button>
             <button type="button" class="picker-option" role="radio" aria-checked="false" data-option="andet">
               <span class="ico" aria-hidden="true">
@@ -210,8 +224,8 @@
             -->
             <form class="request-form" id="request-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
               <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
-              <input type="hidden" name="subject" id="form-subject" value="RenoRaad — ny forespørgsel" />
-              <input type="hidden" name="from_name" value="RenoRaad hjemmeside" />
+              <input type="hidden" name="subject" id="form-subject" value="SmartByg — ny forespørgsel" />
+              <input type="hidden" name="from_name" value="SmartByg hjemmeside" />
               <input type="hidden" name="Hvad_har_du_brug_for" id="form-service" value="Materialer" />
               <!-- Honeypot anti-spam (must stay empty). -->
               <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
@@ -230,7 +244,7 @@
                   <input type="email" name="Mail" autocomplete="email" required />
                 </label>
                 <label class="field">
-                  <span class="field-label">Adresse <span class="field-opt">(leveringsadresse)</span></span>
+                  <span class="field-label">Adresse <span class="field-opt">(projekt- eller leveringsadresse)</span></span>
                   <input type="text" name="Adresse" autocomplete="street-address" />
                 </label>
                 <label class="field">
@@ -249,7 +263,7 @@
                   </select>
                 </label>
                 <label class="field field-file" id="field-upload">
-                  <span class="field-label">Upload materialeliste <span class="field-opt">(PDF, Excel eller billede)</span></span>
+                  <span class="field-label"><span id="upload-label">Upload materialeliste</span> <span class="field-opt">(PDF, Excel eller billede)</span></span>
                   <input type="file" name="attachment" accept=".pdf,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.heic" multiple />
                 </label>
                 <label class="field field-wide">
@@ -300,75 +314,171 @@
           <h2>Her er det, vi kan hjælpe dig med.</h2>
         </header>
 
-        <div class="cards cards-5">
-          <article class="card reveal">
-            <span class="ico ico-lg" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="12.6" width="18" height="5.4" rx="1.4" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                <rect x="3" y="12.6" width="18" height="5.4" rx="1.4"/>
-                <rect x="5.2" y="7.2" width="13.6" height="5.4" rx="1.4"/>
-                <path d="M8.2 12.6v5.4M13.6 12.6v5.4M9.9 7.2v5.4M14.4 7.2v5.4"/>
-              </svg>
-            </span>
-            <h3>Byggematerialer</h3>
-            <p>Upload din materialeliste og modtag et samlet tilbud.</p>
-            <a class="card-link" href="#start" data-select="materialer">Upload liste →</a>
+        <div class="services">
+          <article class="service reveal">
+            <div class="service-main">
+              <span class="ico ico-lg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="12.6" width="18" height="5.4" rx="1.4" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <rect x="3" y="12.6" width="18" height="5.4" rx="1.4"/>
+                  <rect x="5.2" y="7.2" width="13.6" height="5.4" rx="1.4"/>
+                  <path d="M8.2 12.6v5.4M13.6 12.6v5.4M9.9 7.2v5.4M14.4 7.2v5.4"/>
+                </svg>
+              </span>
+              <p class="service-kicker">Byggematerialer</p>
+              <h3>Få de rigtige byggematerialer – til den rigtige pris</h3>
+              <p>Har du en materialeliste, eller ved du, hvad du skal bygge?</p>
+              <p>
+                Upload din liste og fortæl os om dit projekt. Vi gennemgår det og
+                giver dig et samlet tilbud på materialerne. Samtidig sikrer vi, at
+                du får de rigtige produkter, så du undgår dyre fejlkøb og unødige
+                ture til byggemarkedet.
+              </p>
+              <a class="btn btn-primary" href="#start" data-select="materialer">Upload din materialeliste</a>
+            </div>
+            <div class="service-facts">
+              <h4>Du får blandt andet</h4>
+              <ul>
+                <li>Gennemgang af materialelisten</li>
+                <li>Konkurrencedygtige priser</li>
+                <li>Gratis levering over 6.000 kr.</li>
+                <li>Personlig sparring</li>
+                <li>Mulighed for rådgivning</li>
+              </ul>
+            </div>
           </article>
-          <article class="card reveal">
-            <span class="ico ico-lg" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8.4 14.4a5.6 5.6 0 1 1 7.2 0c-.7.6-1.1 1.4-1.2 2.2l-.1 1h-4.6l-.1-1c-.1-.8-.5-1.6-1.2-2.2Z" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                <path d="M8.4 14.4a5.6 5.6 0 1 1 7.2 0c-.7.6-1.1 1.4-1.2 2.2l-.1 1h-4.6l-.1-1c-.1-.8-.5-1.6-1.2-2.2Z"/>
-                <path d="M10 19.4h4M10.7 21.4h2.6"/>
-                <path d="M10.4 10.6c.7.7 2.5.7 3.2 0M12 12.6V9.6"/>
-              </svg>
-            </span>
-            <h3>Rådgivning</h3>
-            <p>Få sparring fra en uddannet håndværker — om materialer eller projektet.</p>
-            <a class="card-link" href="#start" data-select="raadgivning">Få rådgivning →</a>
+
+          <article class="service reveal">
+            <div class="service-main">
+              <span class="ico ico-lg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.4 14.4a5.6 5.6 0 1 1 7.2 0c-.7.6-1.1 1.4-1.2 2.2l-.1 1h-4.6l-.1-1c-.1-.8-.5-1.6-1.2-2.2Z" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <path d="M8.4 14.4a5.6 5.6 0 1 1 7.2 0c-.7.6-1.1 1.4-1.2 2.2l-.1 1h-4.6l-.1-1c-.1-.8-.5-1.6-1.2-2.2Z"/>
+                  <path d="M10 19.4h4M10.7 21.4h2.6"/>
+                  <path d="M10.4 10.6c.7.7 2.5.7 3.2 0M12 12.6V9.6"/>
+                </svg>
+              </span>
+              <p class="service-kicker">Rådgivning</p>
+              <h3>Er du i tvivl? Vi hjælper dig videre.</h3>
+              <p>
+                Det kan være svært at vide, hvor man skal starte, hvilke materialer
+                der passer bedst, eller hvordan projektet skal gribes an.
+              </p>
+              <p>
+                Hos SmartByg får du praktisk sparring, så du kan komme godt fra
+                start eller videre i dit projekt.
+              </p>
+              <a class="btn btn-primary" href="#start" data-select="raadgivning">Book rådgivning</a>
+            </div>
+            <div class="service-facts">
+              <h4>Vi hjælper med</h4>
+              <ul>
+                <li>Materialevalg</li>
+                <li>Konstruktion</li>
+                <li>Opstart</li>
+                <li>Projektgennemgang</li>
+                <li>Når du er kørt fast</li>
+              </ul>
+            </div>
           </article>
-          <article class="card reveal">
-            <span class="ico ico-lg" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3.2" y="9" width="17.6" height="9.8" rx="1.8" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                <rect x="3.2" y="9" width="17.6" height="9.8" rx="1.8"/>
-                <path d="M3.2 13.2h17.6"/>
-                <path d="M8.8 9V7.4a1.5 1.5 0 0 1 1.5-1.5h3.4a1.5 1.5 0 0 1 1.5 1.5V9"/>
-                <rect x="10.7" y="12" width="2.6" height="2.4" rx=".6"/>
-              </svg>
-            </span>
-            <h3>Værktøjsudlejning</h3>
-            <p>Lej professionelt værktøj uden at skulle investere i det.</p>
-            <a class="card-link" href="#start" data-select="vaerktoej">Lej værktøj →</a>
+
+          <article class="service reveal">
+            <div class="service-main">
+              <span class="ico ico-lg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3.2" y="9" width="17.6" height="9.8" rx="1.8" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <rect x="3.2" y="9" width="17.6" height="9.8" rx="1.8"/>
+                  <path d="M3.2 13.2h17.6"/>
+                  <path d="M8.8 9V7.4a1.5 1.5 0 0 1 1.5-1.5h3.4a1.5 1.5 0 0 1 1.5 1.5V9"/>
+                  <rect x="10.7" y="12" width="2.6" height="2.4" rx=".6"/>
+                </svg>
+              </span>
+              <p class="service-kicker">Leje af værktøj</p>
+              <h3>Lej professionelt værktøj – kun når du har brug for det</h3>
+              <p>Du behøver ikke købe dyrt værktøj, som kun skal bruges én gang.</p>
+              <p>
+                Hos SmartByg kan du leje professionelt værktøj til netop dit
+                projekt.
+              </p>
+              <a class="btn btn-primary" href="#start" data-select="vaerktoej">Se værktøj</a>
+            </div>
+            <div class="service-facts">
+              <h4>Eksempler</h4>
+              <ul>
+                <li>Kapsav</li>
+                <li>Pladevibrator</li>
+                <li>Fliseskærer</li>
+                <li>Laser</li>
+                <li>Stillads</li>
+                <li>Betonblander</li>
+                <li>Og meget andet</li>
+              </ul>
+            </div>
           </article>
-          <article class="card reveal">
-            <span class="ico ico-lg" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2.6" y="7.2" width="11" height="8.6" rx="1.4" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                <rect x="2.6" y="7.2" width="11" height="8.6" rx="1.4"/>
-                <path d="M13.6 10h3.2a1.5 1.5 0 0 1 1.2.6l2 2.7a1.5 1.5 0 0 1 .3.9v1.6H13.6Z"/>
-                <circle cx="7" cy="17.6" r="1.8"/>
-                <circle cx="17.2" cy="17.6" r="1.8"/>
-                <path d="M8.8 17.8h6.6"/>
-              </svg>
-            </span>
-            <h3>Levering</h3>
-            <p>Få materialerne leveret direkte til din adresse.</p>
-            <a class="card-link" href="#start" data-select="levering">Hør om levering →</a>
+
+          <article class="service reveal">
+            <div class="service-main">
+              <span class="ico ico-lg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5.5 10.2 12 5.1l6.5 5.1V19h-13Z" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <path d="M2.8 11.4 12 4.2l9.2 7.2"/>
+                  <path d="M5.5 10.2V19h5.4"/>
+                  <path d="M18.5 10.2v2.2"/>
+                  <circle cx="16.2" cy="16.2" r="3.1"/>
+                  <path d="m18.5 18.5 2.3 2.3"/>
+                </svg>
+              </span>
+              <p class="service-kicker">Huskøbsgennemgang</p>
+              <h3>Få en håndværker med på råd, før du køber huset</h3>
+              <p>Et huskøb er en stor beslutning.</p>
+              <p>
+                Vi hjælper dig med at vurdere boligens stand, peger på de ting, du
+                bør være opmærksom på, og giver dig et realistisk billede af de
+                renoveringer, der kan vente.
+              </p>
+              <p>
+                Du får et bedre grundlag for at træffe den rigtige beslutning –
+                inden du skriver under.
+              </p>
+              <a class="btn btn-primary" href="#start" data-select="huskoeb">Book en gennemgang</a>
+            </div>
+            <div class="service-facts">
+              <h4>Vi ser blandt andet på</h4>
+              <ul>
+                <li>Tag</li>
+                <li>Facade</li>
+                <li>Vinduer</li>
+                <li>Isolering</li>
+                <li>Fundament</li>
+                <li>Mulige renoveringer</li>
+                <li>Materialebehov</li>
+                <li>Et overslag over kommende udgifter</li>
+              </ul>
+            </div>
           </article>
-          <article class="card reveal">
-            <span class="ico ico-lg" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="4.6" width="14" height="16" rx="2" fill="currentColor" fill-opacity=".15" stroke="none"/>
-                <rect x="5" y="4.6" width="14" height="16" rx="2"/>
-                <path d="M9.2 4.6V3.5a1.2 1.2 0 0 1 1.2-1.2h3.2a1.2 1.2 0 0 1 1.2 1.2v1.1Z"/>
-                <path d="m9 12.4 2 2 4-4"/>
-                <path d="M9 17.4h6"/>
-              </svg>
-            </span>
-            <h3>Projektgennemgang</h3>
-            <p>Er du usikker på dit projekt? Vi gennemgår det, inden du går i gang.</p>
-            <a class="card-link" href="#start" data-select="raadgivning">Book gennemgang →</a>
+
+          <article class="service service-solo reveal">
+            <div class="service-main">
+              <span class="ico ico-lg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="4.6" width="14" height="16" rx="2" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                  <rect x="5" y="4.6" width="14" height="16" rx="2"/>
+                  <path d="M9.2 4.6V3.5a1.2 1.2 0 0 1 1.2-1.2h3.2a1.2 1.2 0 0 1 1.2 1.2v1.1Z"/>
+                  <path d="m9 12.4 2 2 4-4"/>
+                  <path d="M9 17.4h6"/>
+                </svg>
+              </span>
+              <p class="service-kicker">Projektgennemgang</p>
+              <h3>Få dit projekt gennemgået, før du går i gang</h3>
+              <p>Har du tegninger, billeder eller en idé til et projekt?</p>
+              <p>
+                Vi gennemgår det sammen med dig og sikrer, at du kommer godt fra
+                start med de rigtige materialer, den rigtige plan og de rigtige
+                valg. Det giver dig et bedre overblik og kan spare både tid og
+                penge.
+              </p>
+              <a class="btn btn-primary" href="#start" data-select="projektgennemgang">Book projektgennemgang</a>
+            </div>
           </article>
         </div>
       </div>
@@ -563,11 +673,11 @@
       </div>
     </section>
 
-    <!-- ───────────── Why RenoRaad ───────────── -->
+    <!-- ───────────── Why SmartByg ───────────── -->
     <section class="section section-sunken" id="fordele">
       <div class="container split">
         <div class="split-copy reveal">
-          <p class="eyebrow">05 — Hvorfor vælge RenoRaad?</p>
+          <p class="eyebrow">05 — Hvorfor vælge SmartByg?</p>
           <h2>Én partner — hele vejen.</h2>
           <p class="lead">
             Vi gør gør-det-selv-projekter enklere. Ikke ved at overtage
@@ -590,19 +700,19 @@
     <section class="section" id="om">
       <div class="container about">
         <div class="about-visual reveal">
-          <div class="about-photo" role="img" aria-label="Simon, uddannet tømrer og grundlægger af RenoRaad">
+          <div class="about-photo" role="img" aria-label="Simon, uddannet tømrer og grundlægger af SmartByg">
             <span class="about-photo-initials" aria-hidden="true">S</span>
           </div>
           <p class="about-cap">Simon · uddannet tømrer · grundlægger</p>
         </div>
         <div class="about-copy reveal">
-          <p class="eyebrow">Om RenoRaad</p>
+          <p class="eyebrow">Om SmartByg</p>
           <h2>Hej, jeg hedder Simon.</h2>
           <p>
             Jeg er uddannet tømrer og har gennem mange år arbejdet i byggebranchen.
             Gennem mit arbejde har jeg oplevet, hvor svært det kan være for private
             at finde rundt i byggematerialer, priser og de mange valg, der følger
-            med et byggeprojekt. Derfor skabte jeg RenoRaad.
+            med et byggeprojekt. Derfor skabte jeg SmartByg.
           </p>
           <p>
             Min ambition er at gøre gør-det-selv-projekter enklere — ikke ved at
@@ -612,11 +722,11 @@
             resten både nemmere og mere overskueligt.
           </p>
           <p>
-            RenoRaad er bygget på ordentlighed, faglighed og personlig service.
+            SmartByg er bygget på ordentlighed, faglighed og personlig service.
             Jeg ønsker, at du som kunde oplever, at der er én, der tager sig tid
             til at hjælpe — også selvom du bygger selv.
           </p>
-          <p class="about-sign">Velkommen til RenoRaad.</p>
+          <p class="about-sign">Velkommen til SmartByg.</p>
         </div>
       </div>
     </section>
@@ -721,8 +831,8 @@
 
         <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
-          <input type="hidden" name="subject" value="RenoRaad — besked fra kontaktformular" />
-          <input type="hidden" name="from_name" value="RenoRaad hjemmeside" />
+          <input type="hidden" name="subject" value="SmartByg — besked fra kontaktformular" />
+          <input type="hidden" name="from_name" value="SmartByg hjemmeside" />
           <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span class="field-label">Navn</span>
@@ -767,7 +877,7 @@
               <path d="M3 10.5 12 4l9 6.5" /><path d="M5 9.5V20h14V9.5" /><path d="M9.5 20v-5.5h5V20" />
             </svg>
           </span>
-          <span class="brand-name">RenoRaad</span>
+          <span class="brand-name">SmartByg</span>
         </span>
         <p>Alt det, du har brug for, når du vil bygge selv.</p>
         <!-- TODO: indsæt rigtigt CVR-nummer. -->
@@ -778,15 +888,16 @@
         <h4>Ydelser</h4>
         <a href="#start" data-select="materialer">Byggematerialer</a>
         <a href="#start" data-select="raadgivning">Rådgivning</a>
-        <a href="#start" data-select="vaerktoej">Værktøjsudlejning</a>
-        <a href="#start" data-select="levering">Levering</a>
+        <a href="#start" data-select="vaerktoej">Leje af værktøj</a>
+        <a href="#start" data-select="huskoeb">Huskøbsgennemgang</a>
+        <a href="#start" data-select="projektgennemgang">Projektgennemgang</a>
       </nav>
 
       <nav class="footer-col" aria-label="Sidefod — siden">
         <h4>Siden</h4>
         <a href="#saadan">Sådan foregår det</a>
         <a href="#projekter">Projekter</a>
-        <a href="#om">Om RenoRaad</a>
+        <a href="#om">Om SmartByg</a>
         <a href="#faq">FAQ</a>
       </nav>
 
@@ -807,7 +918,7 @@
     </div>
 
     <div class="container footer-bottom">
-      <span>© 2026 RenoRaad</span>
+      <span>© 2026 SmartByg</span>
       <span>renoraad.dk</span>
     </div>
   </footer>
