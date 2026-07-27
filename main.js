@@ -28,6 +28,40 @@
     els.forEach(function (el) { io.observe(el); });
   })();
 
+  /* ---------- Mobile navigation ---------- */
+  (function () {
+    var toggle = document.getElementById("nav-toggle");
+    var nav = document.getElementById("site-nav");
+    if (!toggle || !nav) return;
+
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Luk menu" : "Åbn menu");
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Picking a destination should close the menu again.
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // The drop-down only exists below the desktop breakpoint.
+    window.matchMedia("(min-width: 800px)").addEventListener("change", function (e) {
+      if (e.matches) setOpen(false);
+    });
+  })();
+
   /* ---------- Interactive selector ---------- */
   // Per-option copy + which fields the request form should show.
   var OPTIONS = {

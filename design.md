@@ -102,8 +102,8 @@ precision. No serif. Set generous line-height for calm, readable copy.
 | Small/Label | 14px           | 500    | 1.4         | Eyebrows, captions, nav       |
 | Eyebrow     | 13px           | 600    | 1.3         | Uppercase, `+0.08em` tracking |
 
-- Numerals for the "how it works" steps (`01 02 03 04`) use **tabular figures**
-  and the accent colour.
+- Numerals for the journey steps and section eyebrows (`01 02 03 04`) use
+  **tabular figures** and the accent colour.
 - Max text measure: ~65–70 characters per line for body copy.
 
 ## Layout & grid
@@ -146,12 +146,44 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Materialer/Levering show the file-upload field; others show a plain form.
 - Should read as a modern, app-like service — not a static brochure.
 
-### "Sådan fungerer det" (How it works)
+### "Sådan foregår det" (customer journey)
 
-- 3 steps in a row on desktop (`.steps-3`), stacked on mobile.
-- Big tabular accent numeral, short heading, one line of copy. Mirrors the
-  journey: **Fortæl om dit projekt → Vælg den hjælp, du har brug for → Kom i
-  gang.** (No MobilePay step.)
+- A **vertical** numbered walk-through (`.journey`), not a row of terse tiles —
+  the flow is the main trust-builder, so it gets room to explain itself.
+- Each `.journey-step` is a card: round accent numeral, heading, one paragraph,
+  and a short `.journey-example` (accent-tinted left rule) that follows one
+  named customer through the whole flow, so the process reads as real.
+- Five steps: **Fortæl om dit projekt → Vi gennemgår det sammen → Du får ét
+  samlet tilbud → Godkend og få det leveret → Du bygger, vi er stadig med.**
+  (No MobilePay step.)
+- Closes with a `.journey-foot`: primary CTA plus the phone number, so the
+  section converts on its own.
+
+### Trust strip (`.strip`)
+
+- Full-width sunken band directly under the selector: four short factual
+  claims (uddannet tømrer · pris før opstart · fri levering · én
+  kontaktperson). 2-up on mobile, 4-up from 800px. Facts only — no numbers we
+  cannot document.
+
+### Value / savings band (`.savings`)
+
+- Accent-soft band that answers "hvad kan jeg spare?": one large accent figure
+  plus a checklist of *why* the saving exists. Always carries a `.savings-note`
+  qualifier — figures are illustrative and must be defensible.
+
+### Project cards
+
+- "Populære projekter" uses the standard `.card` grid (icon badge, title, one
+  line of copy, deep link), not bare chips — each card is an entry point that
+  pre-selects an option in the selector via `data-select`.
+
+### Navigation
+
+- Desktop: full inline nav (Forside · Ydelser · Sådan foregår det · Projekter ·
+  FAQ · Kontakt) plus the language switch and the primary CTA.
+- Below 800px the nav collapses behind `.nav-toggle` and drops down from the
+  header bar; the "Få et tilbud" CTA stays visible at all widths.
 
 ### Trust elements (high priority for conversion)
 
