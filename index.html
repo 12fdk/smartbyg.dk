@@ -40,11 +40,13 @@
         <span class="brand-name">RenoRaad</span>
       </a>
 
-      <nav class="site-nav" aria-label="Hovednavigation">
+      <nav class="site-nav" id="site-nav" aria-label="Hovednavigation">
+        <a href="#top">Forside</a>
         <a href="#ydelser">Ydelser</a>
-        <a href="#saadan">Sådan fungerer det</a>
+        <a href="#saadan">Sådan foregår det</a>
         <a href="#projekter">Projekter</a>
         <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
       </nav>
 
       <div class="header-actions">
@@ -54,6 +56,15 @@
           <a href="#" aria-disabled="true" title="Kommer snart">EN</a>
         </div>
         <a class="btn btn-primary" href="#start">Få et tilbud</a>
+        <button type="button" class="nav-toggle" id="nav-toggle"
+                aria-controls="site-nav" aria-expanded="false" aria-label="Åbn menu">
+          <svg class="nav-toggle-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg class="nav-toggle-close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
       </div>
     </div>
   </header>
@@ -72,8 +83,8 @@
             første idé til de sidste skruer.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="#start" data-select="materialer">Upload materialeliste</a>
-            <a class="btn btn-ghost btn-lg" href="#start" data-select="raadgivning">Få rådgivning</a>
+            <a class="btn btn-primary btn-lg" href="#start">Få et tilbud</a>
+            <a class="btn btn-ghost btn-lg" href="#saadan">Se hvordan det virker</a>
           </div>
           <ul class="reassure" aria-label="Det får du">
             <li>Uddannet tømrer bag hver opgave</li>
@@ -259,40 +270,34 @@
       </div>
     </section>
 
-    <!-- ───────────── How it works ───────────── -->
-    <section class="section" id="saadan">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">01 — Sådan fungerer det</p>
-          <h2>Tre enkle trin.</h2>
-        </header>
-
-        <ol class="steps steps-3">
-          <li class="step reveal">
-            <span class="step-num">01</span>
-            <h3>Fortæl os om dit projekt</h3>
-            <p>Upload din materialeliste eller beskriv kort, hvad du skal bygge.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">02</span>
-            <h3>Vælg den hjælp, du har brug for</h3>
-            <p>Materialer, rådgivning, værktøj eller levering — du bestemmer.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">03</span>
-            <h3>Kom i gang</h3>
-            <p>Vi hjælper dig videre, så du kan fokusere på selve projektet.</p>
-          </li>
-        </ol>
+    <!-- ───────────── Trust strip ───────────── -->
+    <section class="strip" aria-label="Det kan du regne med">
+      <div class="container strip-inner">
+        <div class="stat">
+          <strong>Uddannet tømrer</strong>
+          <span>Faglig hjælp bag hver opgave</span>
+        </div>
+        <div class="stat">
+          <strong>Pris før opstart</strong>
+          <span>Ingen skjulte gebyrer</span>
+        </div>
+        <div class="stat">
+          <strong>Fri levering</strong>
+          <span>Over 6.000 kr. til brofaste øer</span>
+        </div>
+        <div class="stat">
+          <strong>Én kontaktperson</strong>
+          <span>Hele vejen gennem projektet</span>
+        </div>
       </div>
     </section>
 
     <!-- ───────────── Services ───────────── -->
-    <section class="section section-sunken" id="ydelser">
+    <section class="section" id="ydelser">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow">02 — Vores ydelser</p>
-          <h2>Alt det, du har brug for, når du vil bygge selv.</h2>
+          <p class="eyebrow">01 — Vores ydelser</p>
+          <h2>Her er det, vi kan hjælpe dig med.</h2>
         </header>
 
         <div class="cards cards-5">
@@ -369,11 +374,200 @@
       </div>
     </section>
 
+    <!-- ───────────── Customer journey ───────────── -->
+    <section class="section section-sunken" id="saadan">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">02 — Sådan foregår det</p>
+          <h2>Fra idé til færdigt projekt.</h2>
+          <p class="lead section-lead">
+            Sådan ser et typisk forløb ud — her fulgt af Mette, der skulle
+            bygge en ny terrasse på 20 m².
+          </p>
+        </header>
+
+        <ol class="journey">
+          <li class="journey-step reveal">
+            <span class="journey-num" aria-hidden="true">1</span>
+            <div>
+              <h3>Fortæl om dit projekt</h3>
+              <p>Upload din materialeliste, eller beskriv kort hvad du skal bygge. Har du ikke en liste endnu, hjælper vi dig med at lave den.</p>
+              <p class="journey-example"><strong>Mette:</strong> uploadede en skitse af terrassen og skrev, hvilket træ hun gerne ville have.</p>
+            </div>
+          </li>
+          <li class="journey-step reveal">
+            <span class="journey-num" aria-hidden="true">2</span>
+            <div>
+              <h3>Vi gennemgår det sammen</h3>
+              <p>En uddannet tømrer kigger projektet igennem og ringer dig op. Vi spørger ind til det, der har betydning for pris og holdbarhed.</p>
+              <p class="journey-example"><strong>Mette:</strong> fik en snak om stolpeafstand og fik rettet mængden af strøer, inden der blev bestilt.</p>
+            </div>
+          </li>
+          <li class="journey-step reveal">
+            <span class="journey-num" aria-hidden="true">3</span>
+            <div>
+              <h3>Du får ét samlet tilbud</h3>
+              <p>Materialer, eventuelt værktøj og levering samlet i én pris. Du får altid prisen, inden vi går i gang — uden skjulte gebyrer.</p>
+              <p class="journey-example"><strong>Mette:</strong> modtog ét tilbud på materialer og levering — og kunne selv vælge værktøj til.</p>
+            </div>
+          </li>
+          <li class="journey-step reveal">
+            <span class="journey-num" aria-hidden="true">4</span>
+            <div>
+              <h3>Godkend og få det leveret</h3>
+              <p>Siger du ja, bestiller vi materialerne og får dem leveret til din adresse. Mangler du værktøj, sender vi det med.</p>
+              <p class="journey-example"><strong>Mette:</strong> fik træ, beslag og en lånt sømpistol leveret i indkørslen om fredagen.</p>
+            </div>
+          </li>
+          <li class="journey-step reveal">
+            <span class="journey-num" aria-hidden="true">5</span>
+            <div>
+              <h3>Du bygger — vi er stadig med</h3>
+              <p>Går du i stå undervejs, ringer du bare. Vi hjælper med de spørgsmål, der opstår, mens projektet står på.</p>
+              <p class="journey-example"><strong>Mette:</strong> ringede søndag om et hjørnesamling-spørgsmål og byggede færdig samme weekend.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="journey-foot reveal">
+          <a class="btn btn-primary btn-lg" href="#start">Kom i gang med dit projekt</a>
+          <p>Eller ring til os på <a href="tel:+4529900295">29 90 02 95</a> — så tager vi den over telefonen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Value / savings ─────────────
+         TODO: eksempeltallene nedenfor er illustrative. Erstat dem med tal fra
+         et reelt, gennemført projekt (eller fjern beløbene), inden siden
+         markedsføres — så prissammenligningen kan dokumenteres. -->
+    <section class="savings" id="besparelse">
+      <div class="container savings-inner">
+        <div class="reveal">
+          <p class="eyebrow">03 — Hvad kan du spare?</p>
+          <p class="savings-number">Op til 50 %
+            <span>når du selv står for arbejdet</span>
+          </p>
+        </div>
+        <div class="reveal">
+          <p class="savings-copy">
+            På et typisk gør-det-selv-projekt er det arbejdslønnen, der fylder
+            mest. Lægger du selv timerne, betaler du kun for materialer,
+            levering og den hjælp, du reelt har brug for.
+          </p>
+          <ul class="savings-points">
+            <li>Du betaler for materialer — ikke for timer</li>
+            <li>Rådgivning kun der, hvor du er i tvivl</li>
+            <li>Værktøj lejes i stedet for at blive købt</li>
+            <li>Du får prisen, før du siger ja</li>
+          </ul>
+          <p class="savings-note">
+            Eksempel til illustration. Den præcise besparelse afhænger af
+            projekt, materialevalg og hvor meget du selv laver.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Popular projects ───────────── -->
+    <section class="section" id="projekter">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">04 — Populære projekter</p>
+          <h2>Måske er det lige dit projekt.</h2>
+          <p class="lead section-lead">
+            Vi hjælper oftest med projekter som disse — men listen er ikke
+            udtømmende. Skal du noget helt andet, så skriv til os.
+          </p>
+        </header>
+
+        <div class="cards" aria-label="Eksempler på projekter">
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="8.5" width="18" height="9" rx="1.2" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                <rect x="3" y="8.5" width="18" height="9" rx="1.2"/>
+                <path d="M3 11.5h18M3 14.5h18"/>
+                <path d="M6 17.5v2.5M18 17.5v2.5"/>
+              </svg>
+            </span>
+            <h3>Terrasse</h3>
+            <p>Træ, komposit eller fliser — vi hjælper med mængder, stolpeafstand og et samlet tilbud på materialerne.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på terrasse →</a>
+          </article>
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9.5h12v9H6z" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                <path d="M4 9.5h16"/>
+                <path d="M6 9.5v8.5M18 9.5v8.5"/>
+                <path d="M8.6 18v-2.1l1.1-2h4.6l1.1 2V18"/>
+                <path d="M10 18h.01M14 18h.01" stroke-width="2"/>
+              </svg>
+            </span>
+            <h3>Carport</h3>
+            <p>Fra stolper og spær til tagplader. Få styr på konstruktionen — og hvad der skal bestilles hjem.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på carport →</a>
+          </article>
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 10v8.5h12V10" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                <path d="M4 11l8-5 8 5"/>
+                <path d="M6 10v8.5h12V10"/>
+                <rect x="10" y="13" width="4" height="5.5"/>
+              </svg>
+            </span>
+            <h3>Skur & udhus</h3>
+            <p>Redskabsskur, cykelskur eller lille anneks — vi regner materialelisten igennem, før du går i gang.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på skur →</a>
+          </article>
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.5 13.5 12 6l9.5 7.5H2.5Z" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                <path d="M2.5 13.5 12 6l9.5 7.5"/>
+                <path d="M7 11.4h10"/>
+                <path d="M16.5 8.6V6.5h2v3.6"/>
+              </svg>
+            </span>
+            <h3>Tag</h3>
+            <p>Tagplader, undertag, lægter og inddækning. Få rådgivning om opbygningen og materialerne leveret.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på tag →</a>
+          </article>
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4.5" y="4.5" width="15" height="15" rx="1" fill="currentColor" fill-opacity=".15" stroke="none"/>
+                <rect x="4.5" y="4.5" width="15" height="15" rx="1"/>
+                <path d="M12 4.5v15"/>
+                <path d="M8 8h.01M8 16h.01M16 8h.01M16 16h.01" stroke-width="2"/>
+              </svg>
+            </span>
+            <h3>Indvendigt</h3>
+            <p>Gipsvæg, isolering og nyt gulv. Vi hjælper med opbygning, mængder og de rigtige materialer til rummet.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på indvendigt →</a>
+          </article>
+          <article class="card reveal">
+            <span class="ico ico-lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 12h17M3.5 15.5h17" stroke-opacity=".45"/>
+                <path d="M5 9.5 6.5 8 8 9.5V19M11 9.5 12.5 8 14 9.5V19M17 9.5 18.5 8 20 9.5V19"/>
+                <path d="M3.5 12h17M3.5 15.5h17"/>
+              </svg>
+            </span>
+            <h3>Hegn & plankeværk</h3>
+            <p>Stolper, brædder og beslag i de rigtige mål — og et tilbud, der passer til meterne i din have.</p>
+            <a class="card-link" href="#start" data-select="materialer">Få tilbud på hegn →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ───────────── Why RenoRaad ───────────── -->
-    <section class="section" id="fordele">
+    <section class="section section-sunken" id="fordele">
       <div class="container split">
         <div class="split-copy reveal">
-          <p class="eyebrow">Hvorfor vælge RenoRaad?</p>
+          <p class="eyebrow">05 — Hvorfor vælge RenoRaad?</p>
           <h2>Én partner — hele vejen.</h2>
           <p class="lead">
             Vi gør gør-det-selv-projekter enklere. Ikke ved at overtage
@@ -383,96 +577,11 @@
           <a class="btn btn-primary btn-lg" href="#start">Kom i gang</a>
         </div>
         <ul class="checklist reveal">
-          <li>Uddannede håndværkere</li>
-          <li>Personlig rådgivning</li>
-          <li>Nem proces</li>
-          <li>Samlet løsning — ét sted</li>
-          <li>Fokus på gør-det-selv-projekter</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ───────────── Who we help (project types) ───────────── -->
-    <section class="section section-sunken" id="projekter">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">03 — Hvem hjælper vi?</p>
-          <h2>Måske er det lige dit projekt.</h2>
-        </header>
-
-        <ul class="projects" aria-label="Eksempler på projekter">
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="8.5" width="18" height="9" rx="1.2"/>
-                <path d="M3 11.5h18M3 14.5h18"/>
-                <path d="M6 17.5v2.5M18 17.5v2.5"/>
-              </svg>
-            </span>Terrasse
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 9.5h16"/>
-                <path d="M6 9.5v8.5M18 9.5v8.5"/>
-                <path d="M8.6 18v-2.1l1.1-2h4.6l1.1 2V18"/>
-                <path d="M10 18h.01M14 18h.01" stroke-width="2"/>
-              </svg>
-            </span>Carport
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 11l8-5 8 5"/>
-                <path d="M6 10v8.5h12V10"/>
-                <rect x="10" y="13" width="4" height="5.5"/>
-              </svg>
-            </span>Skur
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2.5 13.5 12 6l9.5 7.5"/>
-                <path d="M7 11.4h10"/>
-                <path d="M16.5 8.6V6.5h2v3.6"/>
-              </svg>
-            </span>Tag
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4.5" y="4.5" width="15" height="15" rx="1"/>
-                <path d="M12 4.5v15"/>
-                <path d="M8 8h.01M8 16h.01M16 8h.01M16 16h.01" stroke-width="2"/>
-              </svg>
-            </span>Gipsvæg
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="6" width="16" height="12" rx="1"/>
-                <path d="M4 9q2-1.4 4 0t4 0 4 0 4 0"/>
-                <path d="M4 12q2-1.4 4 0t4 0 4 0 4 0"/>
-                <path d="M4 15q2-1.4 4 0t4 0 4 0 4 0"/>
-              </svg>
-            </span>Isolering
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2.6 19h18.8l-3.4-11H6z"/>
-                <path d="M9.3 8 7 19M14.7 8 17 19M12 8v11"/>
-              </svg>
-            </span>Gulv
-          </li>
-          <li class="project reveal">
-            <span class="project-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 9.5 6.5 8 8 9.5V19M11 9.5 12.5 8 14 9.5V19M17 9.5 18.5 8 20 9.5V19"/>
-                <path d="M3.5 12h17M3.5 15.5h17"/>
-              </svg>
-            </span>Hegn
-          </li>
+          <li>Personlig rådgivning fra en uddannet tømrer</li>
+          <li>Konkurrencedygtige priser på materialer</li>
+          <li>Gratis levering over 6.000 kr. til brofaste øer</li>
+          <li>Én kontaktperson gennem hele projektet</li>
+          <li>Hjælp hele vejen — også mens du bygger</li>
         </ul>
       </div>
     </section>
@@ -516,7 +625,7 @@
     <section class="section section-sunken" id="faq">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow">04 — Ofte stillede spørgsmål</p>
+          <p class="eyebrow">06 — Ofte stillede spørgsmål</p>
           <h2>Godt at vide.</h2>
         </header>
 
@@ -557,6 +666,31 @@
               <p>Du kan selv stå for opmålingen, hvis du har styr på projektet. Har du brug for hjælp, tilbyder vi også opmåling og rådgivning som en ekstra ydelse.</p>
             </div>
           </details>
+          <details class="faq-item">
+            <summary>Skal jeg have bygget før for at kunne bruge jer?</summary>
+            <div class="faq-body">
+              <p>Nej. Mange bygger deres første projekt, når de kontakter os. Vi tilpasser hjælpen efter, hvor meget erfaring du har — og siger også til, hvis en opgave er bedre stillet i hænderne på en fagmand.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Hvad hvis jeg går i stå undervejs?</summary>
+            <div class="faq-body">
+              <p>Så ringer du bare. Du har den samme kontaktperson gennem hele projektet, og vi hjælper med de spørgsmål, der opstår, mens du bygger.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Er der binding, når jeg beder om et tilbud?</summary>
+            <div class="faq-body">
+              <p>Nej. Du får et tilbud med en samlet pris, og så bestemmer du selv, om du vil sige ja. Der er ingen binding, før du godkender.</p>
+            </div>
+          </details>
+          <!-- TODO: bekræft svartiden nedenfor med Simon, før siden markedsføres. -->
+          <details class="faq-item">
+            <summary>Hvor hurtigt hører jeg fra jer?</summary>
+            <div class="faq-body">
+              <p>Vi vender som udgangspunkt tilbage inden for et par hverdage. Haster det, er du altid velkommen til at ringe på 29 90 02 95.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -565,7 +699,7 @@
     <section class="section" id="kontakt">
       <div class="container contact">
         <div class="contact-copy reveal">
-          <p class="eyebrow">05 — Kontakt</p>
+          <p class="eyebrow">07 — Kontakt</p>
           <h2>Skal vi hjælpe med dit projekt?</h2>
           <p class="lead">Ring eller skriv — så finder vi ud af det rette næste skridt sammen.</p>
           <ul class="contact-list">
@@ -615,7 +749,7 @@
     <!-- ───────────── Final CTA ───────────── -->
     <section class="cta-band">
       <div class="container cta-inner reveal">
-        <h2>Alt det, du har brug for, når du vil bygge selv.</h2>
+        <h2>Klar til dit næste projekt?</h2>
         <p>Upload din materialeliste eller få rådgivning — vi hjælper dig godt fra start.</p>
         <a class="btn btn-on-accent btn-lg" href="#start">Få et tilbud</a>
       </div>
@@ -642,10 +776,18 @@
 
       <nav class="footer-col" aria-label="Sidefod — ydelser">
         <h4>Ydelser</h4>
-        <a href="#ydelser">Byggematerialer</a>
-        <a href="#ydelser">Rådgivning</a>
-        <a href="#ydelser">Værktøjsudlejning</a>
-        <a href="#ydelser">Levering</a>
+        <a href="#start" data-select="materialer">Byggematerialer</a>
+        <a href="#start" data-select="raadgivning">Rådgivning</a>
+        <a href="#start" data-select="vaerktoej">Værktøjsudlejning</a>
+        <a href="#start" data-select="levering">Levering</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Sidefod — siden">
+        <h4>Siden</h4>
+        <a href="#saadan">Sådan foregår det</a>
+        <a href="#projekter">Projekter</a>
+        <a href="#om">Om RenoRaad</a>
+        <a href="#faq">FAQ</a>
       </nav>
 
       <nav class="footer-col" aria-label="Sidefod — kontakt">
