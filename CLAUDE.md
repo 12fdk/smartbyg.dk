@@ -1,9 +1,9 @@
 # SmartByg
 
 Brand / page name: **SmartByg** (written as one word in all copy).
-Domain: `smartbyg.dk` (no æ/ø/å in the URL). The old `renoraad.dk` domain
-301-redirects here and is kept alive for inbound links — do not reintroduce it
-in copy, and do not "fix" the copy back to RenoRaad.
+Domain: `smartbyg.dk` (no æ/ø/å in the URL). This is the only domain — the
+earlier `renoraad.dk` was abandoned at the move, not redirected. Do not
+reintroduce it anywhere, and do not "fix" the copy back to RenoRaad.
 
 Landing page for the SmartByg service, hosted on GitHub Pages.
 
