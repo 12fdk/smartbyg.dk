@@ -173,8 +173,8 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Five steps: **Fortæl om dit projekt → Vi gennemgår det sammen → Du får ét
   samlet tilbud → Godkend og få det leveret → Du bygger, vi er stadig med.**
   (No MobilePay step.)
-- Closes with a `.journey-foot`: primary CTA plus the phone number, so the
-  section converts on its own.
+- Closes with a `.journey-foot`: primary CTA plus the e-mail address, so the
+  section converts on its own. (No phone number anywhere on the site.)
 
 ### Trust strip (`.strip`)
 
@@ -186,8 +186,8 @@ precision. No serif. Set generous line-height for calm, readable copy.
 ### Value / savings band (`.savings`)
 
 - Accent-soft band that answers "hvad kan jeg spare?": one large accent figure
-  plus a checklist of *why* the saving exists. Always carries a `.savings-note`
-  qualifier — figures are illustrative and must be defensible.
+  plus a checklist of *why* the saving exists. Figures are illustrative and must
+  be defensible.
 
 ### Project cards
 
@@ -213,6 +213,26 @@ precision. No serif. Set generous line-height for calm, readable copy.
 
 - `--surface-sunken` fill, 1px `--border`, 8px radius. Focus ring uses
   `--accent`. Labels above fields, in `--text-muted`.
+
+### "Din sag" — talking about the app site
+
+Everything after a submission happens on the customer's case at
+`app.smartbyg.dk/sag` (the backend repo is `~/Git/smartbyg/app.smartbyg.dk` —
+see [CLAUDE.md](CLAUDE.md)). The copy on this page has to hand the visitor over
+to it without turning into a manual:
+
+- Call it **"din sag"** in customer-facing Danish, never "portalen", "systemet"
+  or "app'en". The journey and the FAQ both use that phrase.
+- The journey mentions it three times and no more — step 1 (you get the link),
+  step 3 (the tilbud lands there, you say yes there), step 5 (you write there).
+- The FAQ carries the detail: what happens after you send, how you get in, files
+  and messages, drafts, accepting a tilbud. Five entries, kept right after the
+  materialeliste question so they read as one block.
+- Link the case as `https://app.smartbyg.dk/sag` with `rel="noopener"` — once in
+  the FAQ, once in the contact list, once in the footer. It is a *returning*
+  customer's door, so it never competes with the primary CTA.
+- Never promise e-mail replies as a way to reach a case: inbound e-mail is not
+  wired on the backend.
 
 ### Iconography
 

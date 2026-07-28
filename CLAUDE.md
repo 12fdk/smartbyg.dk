@@ -55,16 +55,55 @@ Two later, deliberate changes (issue #18):
   appears only as a selling point (materials bullet, trust strip, FAQ).
   **Huskøbsgennemgang** took its place in the five-service line-up.
 
-### Forms / backend
+### The backend / app site (`app.smartbyg.dk`)
 
-Forms post to **Web3Forms** (`api.web3forms.com/submit`) via AJAX (`main.js`),
-which works on static GitHub Pages and supports file uploads. The access key is
-a placeholder — search `REPLACE_WITH_WEB3FORMS_ACCESS_KEY` in `index.html` and
-insert the real key from web3forms.com (the key is public by design). Other
-placeholders to finalise: the public e-mail (`kontakt@smartbyg.dk` — the address
-is in the copy, but no mailbox exists yet; smartbyg.dk has no MX records), the
-CVR number (footer), and the Handelsbetingelser / Privatlivspolitik /
-Cookiepolitik pages. Phone number is live: **29 90 02 95**.
+This landing page is only the front door. Everything that happens *after* a
+visitor sends the form lives in a **separate repo**:
+
+> `~/Git/smartbyg/app.smartbyg.dk` (GitHub `12fdk/app.smartbyg.dk`) — an
+> Appwrite backend plus the app site. Read its `CLAUDE.md` for how it is built
+> and `docs/api.md` for the HTTP contract before changing anything that touches
+> it. Treat that repo as the source of truth for backend behaviour; do not
+> describe the flow on this page from memory.
+
+What it means for the copy on this site:
+
+- An enquiry is not an e-mail, it is a **sag (case)**. The backend stores it,
+  creates the visitor an Appwrite account and mails them a link into their own
+  view of it. Every case gets a reference like `SB-7K2Q9F`.
+- The customer's view is **`https://app.smartbyg.dk/sag`**; the staff admin
+  (Simon) is `https://app.smartbyg.dk/requests`. Same build, different rights.
+- Login is **passwordless** — a link by e-mail. Every update mails a fresh one,
+  and `/sag` can request a new one for an address that has a case.
+- On the case the customer follows the status (**ny → kontaktet → tilbud sendt
+  → accepteret → … → afsluttet**), reads one shared timeline, writes messages
+  and uploads files. Internal notes are absent from their copy by construction.
+- The customer can **save a draft** and finish it later, and can *ask* for
+  `accepteret` or `annulleret` — an admin answers; nothing moves on its own.
+- **All communication belongs on the case**, which is why this site publishes no
+  phone number (see below) and points people at the form and their sag.
+- Inbound e-mail is *not* wired: a customer who replies to a notification lands
+  in Simon's inbox only. Do not write copy inviting e-mail replies as the way to
+  reach a case.
+
+**Form wiring — check before writing copy.** On `main` both forms still post to
+**Web3Forms** (`api.web3forms.com/submit`) with a placeholder access key, i.e.
+they deliver nothing. The switch to the backend
+(`https://smartbyg-api.fra.appwrite.run/requests`, two submit buttons for
+send-vs-draft, Danish field-name aliases, the `botcheck` honeypot kept, Danish
+error text straight from the backend) is **open PR #20**, branch
+`feature/post-to-smartbyg-backend`, not yet merged. Until it lands, front-page
+copy about "din sag" describes the backend's behaviour, not what this site
+actually does. Note that PR #20 predates the domain move and the phone removal,
+so it still carries `renoraad.dk` and the phone number — fix both when merging.
+
+Other placeholders to finalise: the public e-mail (`kontakt@smartbyg.dk` — the
+address is in the copy, but no mailbox exists yet; smartbyg.dk has no MX
+records), the CVR number (footer), and the Handelsbetingelser /
+Privatlivspolitik / Cookiepolitik pages. There is deliberately **no phone number
+anywhere on the site** — do not reintroduce one; the request form, the case at
+`app.smartbyg.dk/sag` and e-mail are the contact channels. Simon still rings
+customers back, so copy may say *we* call — just never publish a number.
 
 ## Audience & languages
 
@@ -82,3 +121,6 @@ Cookiepolitik pages. Phone number is live: **29 90 02 95**.
 ## See also
 
 - [design.md](design.md) — design system, visual direction, and UI conventions
+- `~/Git/smartbyg/app.smartbyg.dk` — the backend and the app site behind every
+  submission; its `CLAUDE.md`, `README.md` and `docs/api.md` are the source of
+  truth for what happens to an enquiry after it leaves this page

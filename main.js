@@ -196,11 +196,11 @@
             form.reset();
             show("success", "Tak! Vi har modtaget din henvendelse og vender tilbage hurtigst muligt.");
           } else {
-            show("error", "Beklager — der opstod en fejl. Prøv igen, eller ring til os på 29 90 02 95.");
+            show("error", "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.");
           }
         })
         .catch(function () {
-          show("error", "Beklager — der opstod en fejl. Prøv igen, eller ring til os på 29 90 02 95.");
+          show("error", "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.");
         })
         .finally(function () {
           if (btn) { btn.disabled = false; btn.textContent = btnText; }
