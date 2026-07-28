@@ -108,13 +108,23 @@ endpoint, every field name and alias, the markup and `main.js` changes, and what
 the customer's e-mail and login link actually contain. Read it before touching
 either form.
 
-Other placeholders to finalise: the public e-mail (`kontakt@smartbyg.dk` — the
-address is in the copy, but no mailbox exists yet; smartbyg.dk has no MX
-records), the CVR number (footer), and the Handelsbetingelser /
-Privatlivspolitik / Cookiepolitik pages. There is deliberately **no phone number
-anywhere on the site** — do not reintroduce one; the request form, the case at
-`app.smartbyg.dk/sag` and e-mail are the contact channels. Simon still rings
-customers back, so copy may say *we* call — just never publish a number.
+**The site publishes no address, no phone number, no CVR and no legal pages** —
+all four were removed on purpose (#27, #28, #29), not left out by accident. Do
+not reintroduce any of them without being asked.
+
+- **No e-mail address.** `smartbyg.dk` has no MX records and none is being set
+  up: everything belongs on the sag. Mail flows one way — we write to the
+  customer, always with a link back into their case — so a published address
+  would only collect replies nobody reads. The channels are the request form,
+  the contact form and `app.smartbyg.dk/sag`. This is why `main.js`'s
+  `GENERIC_ERROR` asks for a retry instead of naming somewhere to write.
+- **No phone number.** Simon still rings customers back, so copy may say *we*
+  call — just never publish a number.
+- **No CVR** until there is one to print.
+- **No Handelsbetingelser / Privatlivspolitik / Cookiepolitik.** The dead
+  footer links are gone rather than sitting there saying *"kommer snart"*. Worth
+  knowing that the site now collects personal data and creates accounts, so this
+  is a deliberate gap and not a solved problem.
 
 ## Audience & languages
 

@@ -170,8 +170,10 @@
 
   // Only for a dropped connection or an answer we cannot read: anything the
   // backend has an opinion about arrives in Danish and is shown instead.
+  // There is no address or number to fall back to — the site publishes neither —
+  // so this asks for a retry rather than pointing somewhere that goes nowhere.
   var GENERIC_ERROR =
-    "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.";
+    "Beklager — der opstod en fejl. Tjek din forbindelse, og prøv igen om lidt.";
 
   /*
     A submission that trips the honeypot is answered as if it had worked, but

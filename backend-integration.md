@@ -244,8 +244,11 @@ Four things in there are load-bearing:
   thing to branch on if we ever want to focus the offending field — `422` also
   carries `field`.
 - **The generic fallback is for `fetch` rejecting and for a non-JSON answer
-  only** — a dropped connection, an origin that is not allow-listed. It must not
-  name a phone number: this site publishes none.
+  only** — a dropped connection, an origin that is not allow-listed. It names no
+  channel at all: the site publishes neither a phone number nor an e-mail
+  address, so it asks for a retry (#27). That is the whole fallback, which is
+  another reason not to widen its blast radius by using it for answers the
+  backend has already explained.
 
 ### The success text, and the reference that can be null
 
@@ -392,7 +395,8 @@ on the way in, and they are the places to look first if any of this drifts
 again:
 
 - the phone number was gone from the site by then, so both error fallbacks now
-  share one `GENERIC_ERROR` naming `kontakt@smartbyg.dk` instead;
+  share one `GENERIC_ERROR` (which #27 then stripped of the e-mail address too —
+  it names no channel at all now, because the site publishes none);
 - the success text concatenated `data.reference` unguarded, which printed `null`
   on the honeypot path — it is now the guarded `successText()` in §5;
 - `renoraad.dk` is out of the copy and out of `CLAUDE.md` (it survives only in
