@@ -118,6 +118,7 @@
     var panelTitle = document.getElementById("picker-panel-title");
     var panelDesc = document.getElementById("picker-panel-desc");
     var serviceField = document.getElementById("form-service");
+    var projectField = document.getElementById("form-project");
     var uploadField = document.getElementById("field-upload");
     var uploadLabel = document.getElementById("upload-label");
     var commentLabel = document.getElementById("comment-label");
@@ -153,8 +154,14 @@
 
     // Deep-link buttons elsewhere on the page (hero CTAs, service cards):
     // pre-select the matching option, then let the #start anchor scroll there.
+    //
+    // A project card ("Få tilbud på terrasse") also knows which project it is,
+    // so it fills the hidden Projekttype and the visitor is never asked. Links
+    // without one clear it, so last click wins rather than an earlier card's
+    // project riding along with an unrelated enquiry.
     document.querySelectorAll("[data-select]").forEach(function (link) {
       link.addEventListener("click", function () {
+        if (projectField) projectField.value = link.dataset.project || "";
         selectOption(link.dataset.select, false);
       });
     });

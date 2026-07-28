@@ -228,6 +228,12 @@
             -->
             <form class="request-form" id="request-form" action="https://smartbyg-api.fra.appwrite.run/requests" method="POST" enctype="multipart/form-data" novalidate>
               <input type="hidden" name="Hvad_har_du_brug_for" id="form-service" value="Materialer" />
+              <!--
+                Set from the `data-project` on a project card, so someone who
+                came in from "Få tilbud på terrasse" is not asked which project
+                it is a second time. Empty for anyone who arrived another way.
+              -->
+              <input type="hidden" name="Projekttype" id="form-project" value="" />
               <!-- Honeypot anti-spam (must stay empty). -->
               <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
 
@@ -247,21 +253,6 @@
                 <label class="field">
                   <span class="field-label">Adresse <span class="field-opt">(projekt- eller leveringsadresse)</span></span>
                   <input type="text" name="Adresse" autocomplete="street-address" />
-                </label>
-                <label class="field">
-                  <span class="field-label">Projekttype</span>
-                  <select name="Projekttype">
-                    <option value="" selected disabled>Vælg projekt …</option>
-                    <option>Terrasse</option>
-                    <option>Carport</option>
-                    <option>Skur</option>
-                    <option>Tag</option>
-                    <option>Gipsvæg</option>
-                    <option>Isolering</option>
-                    <option>Gulv</option>
-                    <option>Hegn</option>
-                    <option>Andet</option>
-                  </select>
                 </label>
                 <label class="field field-file" id="field-upload">
                   <span class="field-label"><span id="upload-label">Upload materialeliste</span> <span class="field-opt">(PDF, Excel eller billede)</span></span>
@@ -604,7 +595,7 @@
             </span>
             <h3>Terrasse</h3>
             <p>Træ, komposit eller fliser — vi hjælper med mængder, afstand mellem strøer og et samlet tilbud på materialerne.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på terrasse →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Terrasse">Få tilbud på terrasse →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -618,7 +609,7 @@
             </span>
             <h3>Carport</h3>
             <p>Fra stolper og spær til tagplader. Få styr på konstruktionen — og hvad der skal bestilles hjem.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på carport →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Carport">Få tilbud på carport →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -631,7 +622,7 @@
             </span>
             <h3>Skur & udhus</h3>
             <p>Redskabsskur, cykelskur eller lille anneks — vi ser din materialeliste igennem, før du går i gang.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på skur →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Skur">Få tilbud på skur →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -644,7 +635,7 @@
             </span>
             <h3>Tag</h3>
             <p>Tagplader, undertag, lægter og inddækning. Få rådgivning om opbygningen og materialerne leveret.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på tag →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Tag">Få tilbud på tag →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -657,7 +648,7 @@
             </span>
             <h3>Indvendigt</h3>
             <p>Gipsvæg, isolering og nyt gulv. Vi hjælper med opbygning, mængder og de rigtige materialer til rummet.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på indvendigt →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Andet">Få tilbud på indvendigt →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -669,7 +660,7 @@
             </span>
             <h3>Hegn & plankeværk</h3>
             <p>Stolper, brædder og beslag i de rigtige mål — og et tilbud, der passer til meterne i din have.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på hegn →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Hegn">Få tilbud på hegn →</a>
           </article>
         </div>
       </div>
