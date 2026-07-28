@@ -641,7 +641,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   .footer-brand { grid-column: 1 / -1; }
 }
 @media (min-width: 980px) {
-  .footer-grid { grid-template-columns: 1.7fr repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1.7fr repeat(3, 1fr); }
   .footer-brand { grid-column: auto; }
 }
 .footer-brand p { color: var(--text-muted); font-size: 15px; margin-top: var(--sp-3); max-width: 32ch; }
@@ -870,9 +870,6 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
 }
 .contact-form .btn { justify-self: start; }
 
-.footer-cvr { color: var(--text-muted); font-size: 14px; margin-top: var(--sp-3); }
-.footer-cvr em { font-style: normal; opacity: .7; }
-.footer-col a[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
 
 /* ---------- Reveal stagger (additions) ---------- */
 .cards .card:nth-child(4) { transition-delay: .24s; }

@@ -95,8 +95,19 @@ optional: a case needs a number, and the whole submission is rejected without
 one. Make it `required` in the markup so the visitor is told at the field rather
 than after a round trip.
 
-`Projekttype`'s `<option>`s carry no `value`, so their visible text is what gets
-posted — `Gipsvæg`, `Terrasse`, and so on. That is fine; those are aliases too.
+**`project_type`.** There is no dropdown for this. A visitor who clicks a
+project card — *"Få tilbud på terrasse"* — has already said which project it is,
+so the card carries `data-project` and `main.js` copies it into a hidden
+`Projekttype`; anyone who arrives another way sends none, and the case simply
+has no project type. Nobody is asked the same question twice.
+
+That makes the `data-project` values load-bearing: they are matched, lowercased,
+against `PROJECT_ALIASES` in the backend's `validate.js`, and anything not in
+that table is stored as null rather than rejected — so a card labelled *"Skur &
+udhus"* must still carry `Skur`, and *"Hegn & plankeværk"* must carry `Hegn`.
+The *"Indvendigt"* card spans `gipsvaeg`, `isolering` and `gulv` at once, so it
+carries `Andet` rather than guessing one of the three; what it actually is comes
+out of the comment field.
 
 ### Attachments
 
@@ -116,8 +127,17 @@ the bucket with `400 upload_failed` and a Danish message naming the file.
       action="https://smartbyg-api.fra.appwrite.run/requests"
       method="POST" enctype="multipart/form-data" novalidate>
   <input type="hidden" name="Hvad_har_du_brug_for" id="form-service" value="Materialer" />
+  <input type="hidden" name="Projekttype" id="form-project" value="" />
   <!-- Honeypot anti-spam (must stay empty). -->
   <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+```
+
+and, on each project card in `#projekter`:
+
+```html
+<a class="card-link" href="#start" data-select="materialer" data-project="Terrasse">
+  Få tilbud på terrasse →
+</a>
 ```
 
 - `action` moves from `api.web3forms.com/submit` to the endpoint above.
@@ -126,6 +146,10 @@ the bucket with `400 upload_failed` and a Danish message naming the file.
 - **Keep** `botcheck` — this backend uses the same honeypot.
 - **Keep** `Hvad_har_du_brug_for` (`#form-service`); `main.js` still sets it
   from the picker.
+- The `Projekttype` **`<select>` is gone**, replaced by the hidden
+  `#form-project` above. The `[data-select]` handler in `main.js` writes
+  `link.dataset.project` into it — falling back to `""`, so a link without a
+  project clears whatever an earlier card put there.
 
 Deleting `#form-subject` means dropping the `subjectField` lookup and the line
 that writes to it in `selectOption` (`main.js`) — three lines, nothing else
@@ -244,8 +268,11 @@ Four things in there are load-bearing:
   thing to branch on if we ever want to focus the offending field — `422` also
   carries `field`.
 - **The generic fallback is for `fetch` rejecting and for a non-JSON answer
-  only** — a dropped connection, an origin that is not allow-listed. It must not
-  name a phone number: this site publishes none.
+  only** — a dropped connection, an origin that is not allow-listed. It names no
+  channel at all: the site publishes neither a phone number nor an e-mail
+  address, so it asks for a retry (#27). That is the whole fallback, which is
+  another reason not to widen its blast radius by using it for answers the
+  backend has already explained.
 
 ### The success text, and the reference that can be null
 
@@ -392,7 +419,8 @@ on the way in, and they are the places to look first if any of this drifts
 again:
 
 - the phone number was gone from the site by then, so both error fallbacks now
-  share one `GENERIC_ERROR` naming `kontakt@smartbyg.dk` instead;
+  share one `GENERIC_ERROR` (which #27 then stripped of the e-mail address too —
+  it names no channel at all now, because the site publishes none);
 - the success text concatenated `data.reference` unguarded, which printed `null`
   on the honeypot path — it is now the guarded `successText()` in §5;
 - `renoraad.dk` is out of the copy and out of `CLAUDE.md` (it survives only in

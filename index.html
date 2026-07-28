@@ -228,6 +228,12 @@
             -->
             <form class="request-form" id="request-form" action="https://smartbyg-api.fra.appwrite.run/requests" method="POST" enctype="multipart/form-data" novalidate>
               <input type="hidden" name="Hvad_har_du_brug_for" id="form-service" value="Materialer" />
+              <!--
+                Set from the `data-project` on a project card, so someone who
+                came in from "Få tilbud på terrasse" is not asked which project
+                it is a second time. Empty for anyone who arrived another way.
+              -->
+              <input type="hidden" name="Projekttype" id="form-project" value="" />
               <!-- Honeypot anti-spam (must stay empty). -->
               <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
 
@@ -247,21 +253,6 @@
                 <label class="field">
                   <span class="field-label">Adresse <span class="field-opt">(projekt- eller leveringsadresse)</span></span>
                   <input type="text" name="Adresse" autocomplete="street-address" />
-                </label>
-                <label class="field">
-                  <span class="field-label">Projekttype</span>
-                  <select name="Projekttype">
-                    <option value="" selected disabled>Vælg projekt …</option>
-                    <option>Terrasse</option>
-                    <option>Carport</option>
-                    <option>Skur</option>
-                    <option>Tag</option>
-                    <option>Gipsvæg</option>
-                    <option>Isolering</option>
-                    <option>Gulv</option>
-                    <option>Hegn</option>
-                    <option>Andet</option>
-                  </select>
                 </label>
                 <label class="field field-file" id="field-upload">
                   <span class="field-label"><span id="upload-label">Upload materialeliste</span> <span class="field-opt">(PDF, Excel eller billede)</span></span>
@@ -547,7 +538,7 @@
 
         <div class="journey-foot reveal">
           <a class="btn btn-primary btn-lg" href="#start">Kom i gang med dit projekt</a>
-          <p>Eller skriv til os på <a href="mailto:kontakt@smartbyg.dk">kontakt@smartbyg.dk</a> — så vender vi tilbage.</p>
+          <p>Du får en mail med et link til din sag — dér følger du med og skriver til os undervejs.</p>
         </div>
       </div>
     </section>
@@ -604,7 +595,7 @@
             </span>
             <h3>Terrasse</h3>
             <p>Træ, komposit eller fliser — vi hjælper med mængder, afstand mellem strøer og et samlet tilbud på materialerne.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på terrasse →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Terrasse">Få tilbud på terrasse →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -618,7 +609,7 @@
             </span>
             <h3>Carport</h3>
             <p>Fra stolper og spær til tagplader. Få styr på konstruktionen — og hvad der skal bestilles hjem.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på carport →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Carport">Få tilbud på carport →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -631,7 +622,7 @@
             </span>
             <h3>Skur & udhus</h3>
             <p>Redskabsskur, cykelskur eller lille anneks — vi ser din materialeliste igennem, før du går i gang.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på skur →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Skur">Få tilbud på skur →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -644,7 +635,7 @@
             </span>
             <h3>Tag</h3>
             <p>Tagplader, undertag, lægter og inddækning. Få rådgivning om opbygningen og materialerne leveret.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på tag →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Tag">Få tilbud på tag →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -657,7 +648,7 @@
             </span>
             <h3>Indvendigt</h3>
             <p>Gipsvæg, isolering og nyt gulv. Vi hjælper med opbygning, mængder og de rigtige materialer til rummet.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på indvendigt →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Andet">Få tilbud på indvendigt →</a>
           </article>
           <article class="card reveal">
             <span class="ico ico-lg" aria-hidden="true">
@@ -669,7 +660,7 @@
             </span>
             <h3>Hegn & plankeværk</h3>
             <p>Stolper, brædder og beslag i de rigtige mål — og et tilbud, der passer til meterne i din have.</p>
-            <a class="card-link" href="#start" data-select="materialer">Få tilbud på hegn →</a>
+            <a class="card-link" href="#start" data-select="materialer" data-project="Hegn">Få tilbud på hegn →</a>
           </article>
         </div>
       </div>
@@ -849,8 +840,12 @@
               <span class="contact-ic" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
               </span>
-              <!-- TODO: kontakt@smartbyg.dk har endnu ingen postkasse — opsæt MX/videresendelse på smartbyg.dk. -->
-              <span><span class="contact-k">E-mail</span><a href="mailto:kontakt@smartbyg.dk">kontakt@smartbyg.dk</a></span>
+              <!--
+                No published address: smartbyg.dk receives no mail, and every
+                enquiry belongs on a sag. We write to the customer, not the
+                other way round.
+              -->
+              <span><span class="contact-k">Ny henvendelse</span><a href="#start">Vælg, hvad du har brug for →</a></span>
             </li>
             <li>
               <span class="contact-ic" aria-hidden="true">
@@ -913,8 +908,6 @@
           <span class="brand-name">SmartByg</span>
         </span>
         <p>Alt det, du har brug for, når du vil bygge selv.</p>
-        <!-- TODO: indsæt rigtigt CVR-nummer. -->
-        <p class="footer-cvr">CVR-nr.: <em>tilføjes</em></p>
       </div>
 
       <nav class="footer-col" aria-label="Sidefod — ydelser">
@@ -936,17 +929,8 @@
 
       <nav class="footer-col" aria-label="Sidefod — kontakt">
         <h4>Kontakt</h4>
-        <a href="mailto:kontakt@smartbyg.dk">kontakt@smartbyg.dk</a>
         <a href="#start">Få et tilbud</a>
         <a href="https://app.smartbyg.dk/sag" rel="noopener">Log ind på din sag</a>
-      </nav>
-
-      <nav class="footer-col" aria-label="Sidefod — juridisk">
-        <h4>Juridisk</h4>
-        <!-- TODO: opret sider for handelsbetingelser, privatlivs- og cookiepolitik. -->
-        <a href="#" aria-disabled="true" title="Kommer snart">Handelsbetingelser</a>
-        <a href="#" aria-disabled="true" title="Kommer snart">Privatlivspolitik</a>
-        <a href="#" aria-disabled="true" title="Kommer snart">Cookiepolitik</a>
       </nav>
     </div>
 
