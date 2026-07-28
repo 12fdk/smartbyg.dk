@@ -97,6 +97,12 @@ copy about "din sag" describes the backend's behaviour, not what this site
 actually does. Note that PR #20 predates the domain move and the phone removal,
 so it still carries `renoraad.dk` and the phone number — fix both when merging.
 
+[backend-integration.md](backend-integration.md) is the specification for that
+wiring: the endpoint, every field name and alias, the markup and `main.js`
+changes, what the customer's e-mail and login link actually contain, and the
+four things to fix in PR #20 before it merges. Read it before touching either
+form.
+
 Other placeholders to finalise: the public e-mail (`kontakt@smartbyg.dk` — the
 address is in the copy, but no mailbox exists yet; smartbyg.dk has no MX
 records), the CVR number (footer), and the Handelsbetingelser /
@@ -121,6 +127,9 @@ customers back, so copy may say *we* call — just never publish a number.
 ## See also
 
 - [design.md](design.md) — design system, visual direction, and UI conventions
+- [backend-integration.md](backend-integration.md) — how the two forms connect
+  to the backend: endpoint, fields, markup, `main.js`, and the e-mail link the
+  visitor gets back
 - `~/Git/smartbyg/app.smartbyg.dk` — the backend and the app site behind every
   submission; its `CLAUDE.md`, `README.md` and `docs/api.md` are the source of
   truth for what happens to an enquiry after it leaves this page
