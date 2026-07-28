@@ -86,22 +86,27 @@ What it means for the copy on this site:
   in Simon's inbox only. Do not write copy inviting e-mail replies as the way to
   reach a case.
 
-**Form wiring — check before writing copy.** On `main` both forms still post to
-**Web3Forms** (`api.web3forms.com/submit`) with a placeholder access key, i.e.
-they deliver nothing. The switch to the backend
-(`https://smartbyg-api.fra.appwrite.run/requests`, two submit buttons for
-send-vs-draft, Danish field-name aliases, the `botcheck` honeypot kept, Danish
-error text straight from the backend) is **open PR #20**, branch
-`feature/post-to-smartbyg-backend`, not yet merged. Until it lands, front-page
-copy about "din sag" describes the backend's behaviour, not what this site
-actually does. Note that PR #20 predates the domain move and the phone removal,
-so it still carries `renoraad.dk` and the phone number — fix both when merging.
+**Form wiring.** Both forms post to the backend —
+`https://smartbyg-api.fra.appwrite.run/requests`, `multipart/form-data`, no key
+and no token (PR #20). Web3Forms is gone. Before changing either form:
 
-[backend-integration.md](backend-integration.md) is the specification for that
-wiring: the endpoint, every field name and alias, the markup and `main.js`
-changes, what the customer's e-mail and login link actually contain, and the
-four things to fix in PR #20 before it merges. Read it before touching either
-form.
+- The request form has **two submit buttons**, telling "send it now" apart from
+  "gem og færdiggør senere" with `data-submit="false"`. A draft never notifies
+  Simon; the visitor sends it themselves, from the link they are mailed.
+- The inputs keep their Danish `name`s (`Navn`, `Mail`, `Telefon`, `Adresse`,
+  `Kommentar`, `Besked`, `Projekttype`, `Hvad_har_du_brug_for`) — the backend
+  accepts them as aliases, including all six picker labels.
+- The **`botcheck` honeypot** is used by this backend too — keep it. It answers
+  a caught submission `ok: true` with **no reference**, so never print the
+  reference unguarded.
+- Both forms **require a phone number**: a case is rejected without one.
+- Error text comes back from the backend already written in Danish and is shown
+  as-is; the generic fallback is for a dropped connection only.
+
+[backend-integration.md](backend-integration.md) is the full specification: the
+endpoint, every field name and alias, the markup and `main.js` changes, and what
+the customer's e-mail and login link actually contain. Read it before touching
+either form.
 
 Other placeholders to finalise: the public e-mail (`kontakt@smartbyg.dk` — the
 address is in the copy, but no mailbox exists yet; smartbyg.dk has no MX

@@ -1,6 +1,6 @@
 // SmartByg — landing page interactions.
 // Dependency-free for GitHub Pages: scroll-reveal, the interactive "what do you
-// need help with?" selector, and Web3Forms AJAX submission for both forms.
+// need help with?" selector, and posting both forms to the SmartByg backend.
 
 (function () {
   "use strict";
@@ -117,7 +117,6 @@
   if (options.length && panel) {
     var panelTitle = document.getElementById("picker-panel-title");
     var panelDesc = document.getElementById("picker-panel-desc");
-    var subjectField = document.getElementById("form-subject");
     var serviceField = document.getElementById("form-service");
     var uploadField = document.getElementById("field-upload");
     var uploadLabel = document.getElementById("upload-label");
@@ -134,7 +133,6 @@
       if (panelTitle) panelTitle.textContent = cfg.title;
       if (panelDesc) panelDesc.textContent = cfg.desc;
       if (serviceField) serviceField.value = cfg.service;
-      if (subjectField) subjectField.value = "SmartByg — " + cfg.title + " (forespørgsel)";
       if (uploadField) uploadField.hidden = !cfg.upload;
       // Each option that takes a file asks for a different document.
       if (uploadLabel) uploadLabel.textContent = cfg.uploadLabel || "Upload materialeliste";
@@ -162,10 +160,42 @@
     });
   }
 
-  /* ---------- Web3Forms AJAX submission ---------- */
+  /* ---------- Submission to the SmartByg backend ---------- */
+  /*
+    The form posts a FormData to app.smartbyg.dk, which stores the case, creates
+    the visitor an account and mails them a link into it. The request form has
+    two submit buttons — send it now, or park it as a draft to finish later —
+    and the difference between them is one field, `submit`.
+  */
+
+  // Only for a dropped connection or an answer we cannot read: anything the
+  // backend has an opinion about arrives in Danish and is shown instead.
+  var GENERIC_ERROR =
+    "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.";
+
+  /*
+    A submission that trips the honeypot is answered as if it had worked, but
+    with no reference — so the reference is only mentioned when there is one.
+  */
+  function successText(draft, reference) {
+    var ref = reference ? " (" + reference + ")" : "";
+    return draft
+      ? "Gemt" + ref + "! Vi har sendt dig en mail med et link, så du kan færdiggøre sagen, når det passer dig."
+      : "Tak! Vi har modtaget din henvendelse" + ref +
+        " og vender tilbage hurtigst muligt. Du får en mail med et link, hvor du kan følge din sag.";
+  }
+
   function wireForm(form, statusId) {
     if (!form) return;
     var status = document.getElementById(statusId);
+
+    // Safari only gained event.submitter recently; remember the button that was
+    // pressed, so the draft choice survives on older versions too.
+    var lastPressed = null;
+    form.addEventListener("click", function (e) {
+      var btn = e.target.closest ? e.target.closest('button[type="submit"]') : null;
+      if (btn) lastPressed = btn;
+    });
 
     function show(kind, msg) {
       if (!status) return;
@@ -179,31 +209,34 @@
 
       if (!form.reportValidity()) return;
 
-      var keyField = form.querySelector('input[name="access_key"]');
-      if (keyField && /^REPLACE_WITH/.test(keyField.value)) {
-        show("error", "Formularen er endnu ikke koblet til. Indsæt jeres Web3Forms-nøgle for at modtage henvendelser.");
-        return;
-      }
+      var btn = e.submitter || lastPressed || form.querySelector('button[type="submit"]');
+      var draft = btn ? btn.dataset.submit === "false" : false;
 
-      var btn = form.querySelector('button[type="submit"]');
+      var body = new FormData(form);
+      body.set("submit", draft ? "false" : "true");
+
+      var buttons = form.querySelectorAll('button[type="submit"]');
       var btnText = btn ? btn.textContent : "";
-      if (btn) { btn.disabled = true; btn.textContent = "Sender …"; }
+      for (var i = 0; i < buttons.length; i++) buttons[i].disabled = true;
+      if (btn) btn.textContent = draft ? "Gemmer …" : "Sender …";
 
-      fetch(form.action, { method: "POST", body: new FormData(form) })
+      fetch(form.action, { method: "POST", body: body })
         .then(function (res) { return res.json().catch(function () { return {}; }); })
         .then(function (data) {
-          if (data && data.success) {
+          if (data && data.ok) {
             form.reset();
-            show("success", "Tak! Vi har modtaget din henvendelse og vender tilbage hurtigst muligt.");
+            show("success", successText(draft, data.reference));
           } else {
-            show("error", "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.");
+            // The backend's message is Danish and written to be shown as-is.
+            show("error", (data && data.message) || GENERIC_ERROR);
           }
         })
         .catch(function () {
-          show("error", "Beklager — der opstod en fejl. Prøv igen, eller skriv til os på kontakt@smartbyg.dk.");
+          show("error", GENERIC_ERROR);
         })
         .finally(function () {
-          if (btn) { btn.disabled = false; btn.textContent = btnText; }
+          for (var j = 0; j < buttons.length; j++) buttons[j].disabled = false;
+          if (btn) btn.textContent = btnText;
         });
     });
   }

@@ -222,14 +222,11 @@
             </div>
 
             <!--
-              Web3Forms (static-site friendly, supports file uploads).
-              SETUP: replace REPLACE_WITH_WEB3FORMS_ACCESS_KEY below with the key
-              from https://web3forms.com (free). The key is public by design.
+              Posts to the SmartByg backend. It stores the case, creates the
+              visitor an account and mails them a link straight to it — see
+              backend-integration.md.
             -->
-            <form class="request-form" id="request-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
-              <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
-              <input type="hidden" name="subject" id="form-subject" value="SmartByg — ny forespørgsel" />
-              <input type="hidden" name="from_name" value="SmartByg hjemmeside" />
+            <form class="request-form" id="request-form" action="https://smartbyg-api.fra.appwrite.run/requests" method="POST" enctype="multipart/form-data" novalidate>
               <input type="hidden" name="Hvad_har_du_brug_for" id="form-service" value="Materialer" />
               <!-- Honeypot anti-spam (must stay empty). -->
               <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
@@ -277,7 +274,13 @@
               </div>
 
               <div class="form-foot">
-                <button type="submit" class="btn btn-primary btn-lg">Send forespørgsel</button>
+                <!--
+                  Two ways out of the form. "Gem" stores the case as a draft the
+                  visitor finishes later from the link we mail them; nothing
+                  reaches us until they send it.
+                -->
+                <button type="submit" class="btn btn-primary btn-lg" data-submit="true">Send forespørgsel</button>
+                <button type="submit" class="btn btn-ghost btn-lg" data-submit="false">Gem og færdiggør senere</button>
                 <p class="form-note">Du får altid en pris, inden vi går i gang — uden skjulte gebyrer.</p>
               </div>
 
@@ -858,10 +861,10 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
-          <input type="hidden" name="subject" value="SmartByg — besked fra kontaktformular" />
-          <input type="hidden" name="from_name" value="SmartByg hjemmeside" />
+        <form class="contact-form reveal" id="contact-form" action="https://smartbyg-api.fra.appwrite.run/requests" method="POST" novalidate>
+          <!-- A message from here is a case too, just without a chosen service. -->
+          <input type="hidden" name="Hvad_har_du_brug_for" value="andet" />
+          <input type="hidden" name="source" value="kontaktformular" />
           <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
           <label class="field">
             <span class="field-label">Navn</span>
@@ -871,9 +874,10 @@
             <span class="field-label">E-mail</span>
             <input type="email" name="Mail" autocomplete="email" required />
           </label>
+          <!-- Required: every enquiry becomes a case, and Simon rings people back. -->
           <label class="field">
-            <span class="field-label">Telefon <span class="field-opt">(valgfri)</span></span>
-            <input type="tel" name="Telefon" autocomplete="tel" />
+            <span class="field-label">Telefon</span>
+            <input type="tel" name="Telefon" autocomplete="tel" required />
           </label>
           <label class="field">
             <span class="field-label">Besked</span>
