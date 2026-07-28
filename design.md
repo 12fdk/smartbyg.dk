@@ -1,10 +1,9 @@
 # Design
 
 This document captures the visual identity, layout conventions, typography,
-colour, and component patterns for **renoraad.dk** — the marketing / landing
+colour, and component patterns for **smartbyg.dk** — the marketing / landing
 page for the **SmartByg** service (a multi-service helper for DIY homeowners:
 materials, advice, tool rental, house-purchase review, project review).
-The domain keeps the older RenoRaad name; the brand in all copy is SmartByg.
 
 ## Direction: "Nordisk Tillid" (Confident Nordic-Tech)
 
@@ -254,8 +253,8 @@ precision. No serif. Set generous line-height for calm, readable copy.
 - Design for text expansion: EN strings can run ~15–30% longer than DA. Don't
   hard-code widths around copy; let buttons and headings wrap gracefully.
 - Use full Danish characters (æ ø å) — confirm the chosen webfont renders them.
-- Brand name renders as **SmartByg** (one word) in all copy. The domain stays
-  `renoraad.dk` from the earlier RenoRaad name — the mismatch is intentional.
+- Brand name renders as **SmartByg** (one word) in all copy, and the domain is
+  `smartbyg.dk` to match.
 
 ## Accessibility
 
