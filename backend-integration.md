@@ -382,20 +382,23 @@ files and the account afterwards — the backend repo's `CLAUDE.md` says the sam
 thing and means it. The `Demodata` screen in the admin exists so training never
 has to touch a real case; it is not a place to point this form.
 
-## 11. Relationship to PR #20
+## 11. What shipped
 
 [#20](https://github.com/12fdk/smartbyg.dk/pull/20) — *Post the forms to the
-SmartByg backend instead of Web3Forms* — is the implementation of most of this,
-written before the domain move. It is still the right shape. Before it merges:
+SmartByg backend instead of Web3Forms* — is the implementation, and once it
+merges this document describes what is on `main` rather than what should be. It
+was written before the domain move and rebased onto it; four things were fixed
+on the way in, and they are the places to look first if any of this drifts
+again:
 
-- it carries `renoraad.dk` in the copy and in `CLAUDE.md`, and **the phone
-  number**, which has since been removed from the whole site — both error
-  fallbacks in its `main.js` say *"ring til os på 29 90 02 95"*;
-- its success text concatenates `data.reference` unguarded, so the honeypot path
-  prints `null` (§5);
-- its `CLAUDE.md` hunk edits a section that no longer exists on `main`, so it
-  will conflict;
-- its "not yet true" caveat is out of date: `BREVO_API_KEY` is set and mail does
-  send now.
+- the phone number was gone from the site by then, so both error fallbacks now
+  share one `GENERIC_ERROR` naming `kontakt@smartbyg.dk` instead;
+- the success text concatenated `data.reference` unguarded, which printed `null`
+  on the honeypot path — it is now the guarded `successText()` in §5;
+- `renoraad.dk` is out of the copy and out of `CLAUDE.md` (it survives only in
+  the backend's `ALLOWED_ORIGINS`, §8, for links already in people's inboxes);
+- the caveat that no mail was sent yet is dropped — `BREVO_API_KEY` is set and
+  mail does send.
 
-Rebasing it onto `main` and fixing those four is less work than starting again.
+Deleting `#form-subject` also took the `subjectField` lookup and its assignment
+in `selectOption` out of `main.js`, as §4 called for.
