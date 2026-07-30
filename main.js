@@ -56,8 +56,9 @@
       }
     });
 
-    // The drop-down only exists below the desktop breakpoint.
-    window.matchMedia("(min-width: 800px)").addEventListener("change", function (e) {
+    // The drop-down only exists below the desktop breakpoint — keep this width
+    // in step with the one in styles.css.
+    window.matchMedia("(min-width: 1120px)").addEventListener("change", function (e) {
       if (e.matches) setOpen(false);
     });
   })();
