@@ -271,6 +271,13 @@
 
               <div class="form-foot">
                 <!--
+                  Cloudflare Turnstile goes here, rendered from main.js rather
+                  than by the script's own sweep of the page: this form starts
+                  hidden, and a challenge nobody can see is one nobody can
+                  answer. Stays empty until the site key is filled in.
+                -->
+                <div class="turnstile" id="turnstile-request"></div>
+                <!--
                   Two ways out of the form. "Gem" stores the case as a draft the
                   visitor finishes later from the link we mail them; nothing
                   reaches us until they send it.
@@ -883,6 +890,7 @@
             <span class="field-label">Besked</span>
             <textarea name="Besked" rows="4" required placeholder="Hvad kan vi hjælpe med?"></textarea>
           </label>
+          <div class="turnstile" id="turnstile-contact"></div>
           <button type="submit" class="btn btn-primary btn-lg">Send besked</button>
           <p class="form-status" id="contact-status" role="status" aria-live="polite" hidden></p>
         </form>
@@ -945,6 +953,10 @@
     </div>
   </footer>
 
+  <!--
+    Cloudflare Turnstile is loaded by main.js, and only once a site key is set
+    there — so with the widget off, this page asks Cloudflare for nothing.
+  -->
   <script src="main.js" defer></script>
 </body>
 </html>

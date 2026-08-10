@@ -142,6 +142,10 @@
 
       panel.hidden = false;
 
+      // The widget is rendered the first time the form is on screen, not on
+      // page load: it is inside this panel, and until now the panel was hidden.
+      mountTurnstile("turnstile-request", "request");
+
       if (focusPanel) {
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
@@ -166,6 +170,86 @@
         selectOption(link.dataset.select, false);
       });
     });
+  }
+
+  /* ---------- Cloudflare Turnstile ---------- */
+  /*
+    The one thing the honeypot and the IP rate limit could not stop: a bot that
+    posts straight at the API, from a fresh address each time. A Turnstile token
+    can only be minted by whoever solved the challenge for this site key, so a
+    submission without one is not a visitor.
+
+    Everything here is off while the key below is empty — no script is loaded,
+    no widget is rendered, and nothing is sent. The backend matches that: with
+    `TURNSTILE_SECRET` unset it accepts every submission. Turning it on is
+    those two values, in that order — the widget first, the secret after, or
+    every submission in the gap is rejected for a token nobody sent.
+
+    From the Turnstile widget in the Cloudflare dashboard. Not a secret: it is
+    public by design and only works on the hostnames the widget names.
+  */
+  var TURNSTILE_SITEKEY = "";
+
+  var turnstileWidgets = {};   // container id -> widget id, one per form
+  var turnstileWanted = [];    // containers asked for before the script arrived
+
+  // The script calls this by name once it is ready; anything that asked to be
+  // rendered in the meantime is waiting in the queue.
+  window.smartbygTurnstileReady = function () {
+    var queued = turnstileWanted;
+    turnstileWanted = [];
+    queued.forEach(mountTurnstile);
+  };
+
+  function loadTurnstile() {
+    if (!TURNSTILE_SITEKEY || document.getElementById("turnstile-script")) return;
+    var s = document.createElement("script");
+    s.id = "turnstile-script";
+    // `render=explicit` keeps it from sweeping the page itself: one of the two
+    // forms starts hidden, and a challenge nobody can see is one nobody can
+    // answer, so main.js says when.
+    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=smartbygTurnstileReady";
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+
+  /* Render the widget for a form, the first time that form is actually shown. */
+  function mountTurnstile(containerId, action) {
+    if (!TURNSTILE_SITEKEY) return;
+    if (Object.prototype.hasOwnProperty.call(turnstileWidgets, containerId)) return;
+
+    var el = document.getElementById(containerId);
+    if (!el) return;
+
+    if (!window.turnstile) {
+      if (turnstileWanted.indexOf(containerId) < 0) turnstileWanted.push(containerId);
+      loadTurnstile();
+      return;
+    }
+
+    turnstileWidgets[containerId] = window.turnstile.render(el, {
+      sitekey: TURNSTILE_SITEKEY,
+      language: "da",
+      action: action || el.dataset.action || undefined
+    });
+  }
+
+  /* A token is single-use, so a form that has been sent needs a fresh one. */
+  function resetTurnstile(containerId) {
+    var id = turnstileWidgets[containerId];
+    if (id !== undefined && window.turnstile) window.turnstile.reset(id);
+  }
+
+  /*
+    Empty means the visitor has not got past the challenge yet — usually because
+    it is still working, occasionally because it wants a click. Worth catching
+    here: the backend would answer the same thing, one round trip later.
+  */
+  function turnstileToken(containerId) {
+    var id = turnstileWidgets[containerId];
+    if (id === undefined || !window.turnstile) return null;
+    return window.turnstile.getResponse(id) || "";
   }
 
   /* ---------- Submission to the SmartByg backend ---------- */
@@ -195,7 +279,7 @@
         " og vender tilbage hurtigst muligt. Du får en mail med et link, hvor du kan følge din sag.";
   }
 
-  function wireForm(form, statusId) {
+  function wireForm(form, statusId, turnstileId) {
     if (!form) return;
     var status = document.getElementById(statusId);
 
@@ -219,11 +303,20 @@
 
       if (!form.reportValidity()) return;
 
+      var token = turnstileToken(turnstileId);
+      if (token === "") {
+        show("error", "Vent et øjeblik — vi er ved at bekræfte, at du ikke er en robot. Prøv så igen.");
+        return;
+      }
+
       var btn = e.submitter || lastPressed || form.querySelector('button[type="submit"]');
       var draft = btn ? btn.dataset.submit === "false" : false;
 
       var body = new FormData(form);
       body.set("submit", draft ? "false" : "true");
+      // The widget puts this in the form itself, but a `reset()` racing a retry
+      // could empty it — send the token we actually checked.
+      if (token) body.set("cf-turnstile-response", token);
 
       var buttons = form.querySelectorAll('button[type="submit"]');
       var btnText = btn ? btn.textContent : "";
@@ -247,10 +340,16 @@
         .finally(function () {
           for (var j = 0; j < buttons.length; j++) buttons[j].disabled = false;
           if (btn) btn.textContent = btnText;
+          // Spent either way: accepted, rejected, or never arrived. Whatever
+          // the visitor does next needs a token of its own.
+          resetTurnstile(turnstileId);
         });
     });
   }
 
-  wireForm(document.getElementById("request-form"), "form-status");
-  wireForm(document.getElementById("contact-form"), "contact-status");
+  wireForm(document.getElementById("request-form"), "form-status", "turnstile-request");
+  wireForm(document.getElementById("contact-form"), "contact-status", "turnstile-contact");
+
+  // The contact form is on the page from the start, so its widget can be too.
+  mountTurnstile("turnstile-contact", "contact");
 })();

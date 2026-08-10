@@ -376,10 +376,31 @@ not an invitation to reintroduce the domain in this repo's copy.
   it had worked.
 - **Rate limit** — more than 5 submissions from one IP in 10 minutes gets `429`.
   The IP is stored hashed, never raw.
-- **Turnstile** — the backend will verify a `cf-turnstile-response` field if
-  `TURNSTILE_SECRET` is set. It is empty, so the check passes unconditionally
-  and this page needs no widget. If it is ever turned on, the form must send
-  that field or every submission becomes `400 captcha_failed`.
+- **Turnstile** — wired on both forms, and **off**. The widget is rendered by
+  `main.js` from `TURNSTILE_SITEKEY`, and while that is empty no Cloudflare
+  script is loaded, no widget appears and no token is sent. The backend matches
+  it: `verifyTurnstile` accepts everything while its `TURNSTILE_SECRET` is
+  empty.
+
+  Neither of the two above stopped the real thing. In August 568 submissions
+  arrived as drafts from rotating IPs with the honeypot left alone — junk text
+  in a dozen languages, one throwaway address each. They are `POST /requests`
+  like any other, so a token is what separates them from a visitor.
+
+  **Turning it on, in this order.** Reverse it and every submission in the gap
+  is rejected for a token nobody sent.
+
+  1. Create the widget in Cloudflare → Turnstile. Hostnames: `smartbyg.dk` and
+     `localhost` for testing here.
+  2. Put the site key in `TURNSTILE_SITEKEY` in `main.js` and deploy this page.
+     It is public by design — it only works on the hostnames the widget names.
+  3. Set `TURNSTILE_SECRET` in the backend repo's `.env` and run
+     `npm run push:functions`. Only from then on is a missing token a `400
+     captcha_failed`.
+
+  Both forms send the field, reset the widget after every attempt (a token is
+  single-use) and refuse to post while the challenge is unanswered, so a visitor
+  sees a Danish "vent et øjeblik" rather than a rejection from the API.
 
 ## 10. Verifying it
 
