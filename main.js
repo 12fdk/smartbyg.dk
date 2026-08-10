@@ -179,16 +179,17 @@
     can only be minted by whoever solved the challenge for this site key, so a
     submission without one is not a visitor.
 
-    Everything here is off while the key below is empty — no script is loaded,
-    no widget is rendered, and nothing is sent. The backend matches that: with
-    `TURNSTILE_SECRET` unset it accepts every submission. Turning it on is
-    those two values, in that order — the widget first, the secret after, or
-    every submission in the gap is rejected for a token nobody sent.
+    Empty this and everything here switches off — no script is loaded, no
+    widget is rendered, nothing is sent — which is how it shipped before the key
+    existed. The backend has the same switch: with `TURNSTILE_SECRET` unset it
+    accepts every submission. They go on widget first, secret after, or every
+    submission in the gap is rejected for a token nobody sent.
 
-    From the Turnstile widget in the Cloudflare dashboard. Not a secret: it is
-    public by design and only works on the hostnames the widget names.
+    Not a secret: it is public by design, and only works on the hostnames the
+    widget names — `smartbyg.dk` and `localhost`. `www` 301s to the apex, so
+    those two cover every visitor and the page as served from this repo.
   */
-  var TURNSTILE_SITEKEY = "";
+  var TURNSTILE_SITEKEY = "0x4AAAAAAEMCJIGFd7RenMPr";
 
   var turnstileWidgets = {};   // container id -> widget id, one per form
   var turnstileWanted = [];    // containers asked for before the script arrived
