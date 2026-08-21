@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  One page, one entry. The site is a single front page (index.html); every
+  section is an anchor on it, and anchors do not belong in a sitemap.
+  Keep <lastmod> in step with real content changes to index.html — the
+  IndexNow workflow submits a URL only when its lastmod moves.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://smartbyg.dk/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
