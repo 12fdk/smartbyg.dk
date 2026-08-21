@@ -1,0 +1,5 @@
+# SmartByg — everything is public; crawl it all.
+User-agent: *
+Allow: /
+
+Sitemap: https://smartbyg.dk/sitemap.xml
