@@ -669,6 +669,8 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
   border-top: 1px solid var(--border);
   font-size: 14px; color: var(--text-muted);
 }
+.footer-bottom a { color: var(--text); }
+.footer-bottom a:hover { color: var(--accent); }
 
 /* ---------- Reveal animation ---------- */
 /* Only hide content when JS is present to reveal it again — without JS the
