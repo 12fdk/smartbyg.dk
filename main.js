@@ -170,6 +170,17 @@
         selectOption(link.dataset.select, false);
       });
     });
+
+    /*
+      Landing pages (/byggematerialer-tilbud/ and the like) link in here with a
+      `?valg=<option>` before the #start anchor. The home page reads it once on
+      load and opens the request form already pointed at that service, so a
+      visitor who came in for materialer is never asked to pick it again.
+    */
+    var preselect = new URLSearchParams(window.location.search).get("valg");
+    if (preselect && OPTIONS[preselect]) {
+      selectOption(preselect, false);
+    }
   }
 
   /* ---------- Cloudflare Turnstile ---------- */

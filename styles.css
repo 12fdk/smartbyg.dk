@@ -533,6 +533,45 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
 }
 .card-link:hover { color: var(--accent-hover); }
 
+/* ---------- Services index (landing-page links) ---------- */
+/* A compact grid of links to the four use-case landing pages, sitting just
+   under the "Vores ydelser" heading on the home page. Card look, but lighter
+   — the detail lives on each service block below. */
+.services-index {
+  display: grid;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 800px) { .services-index { grid-template-columns: repeat(4, 1fr); } }
+.services-index a {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  box-shadow: var(--shadow-card);
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.services-index a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+.services-index strong {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.services-index span {
+  display: block;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
 /* ---------- Services (detailed offering blocks) ---------- */
 /* Each of the five offerings gets its own block: copy + CTA on the left, the
    "what you get" list on the right. Blocks without a list use .service-solo. */

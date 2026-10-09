@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  One page, one entry. The site is a single front page (index.html); every
-  section is an anchor on it, and anchors do not belong in a sitemap.
-  Keep <lastmod> in step with real content changes to index.html — the
-  IndexNow workflow submits a URL only when its lastmod moves.
+  One entry per real page. Keep <lastmod> in step with real content changes —
+  the IndexNow workflow submits a URL only when its lastmod moves (or the URL
+  is new), so new landing pages get pinged automatically on deploy.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -11,5 +10,29 @@
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://smartbyg.dk/byggematerialer-tilbud/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smartbyg.dk/byggeraadv-givning/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smartbyg.dk/leje-af-vaerktoj/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smartbyg.dk/huskoeb-gennemgang/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
