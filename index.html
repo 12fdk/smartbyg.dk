@@ -28,7 +28,10 @@
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Umami analytics (self-hosted, cookieless). -->
-  <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="f1f3cc61-4a15-435b-b1ac-d099636d088a"></script>
+  <!-- Umami analytics: production-hostname guard — local dev (localhost/127.0.0.1/preview domains) never reports to the smartbyg.dk production site. -->
+<script>
+(function(){var H="smartbyg.dk",d=document;if(location.hostname===H||location.hostname==="www."+H){var s=d.createElement("script");s.src="https://umami.robert-jensen.dk/script.js";s.defer=true;s.dataset.websiteId="f1f3cc61-4a15-435b-b1ac-d099636d088a";d.head.appendChild(s);}})();
+</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Spring til indhold</a>
